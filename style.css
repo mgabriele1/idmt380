@@ -1,4 +1,5 @@
 /*INITIAL STYLING*/
+
 *, *:before, *:after {
     box-sizing: border-box;
     margin: 0;
@@ -8,10 +9,11 @@
 body{
     width: 100%;
     background-color: wheat;
-    padding: 1.5vw;
+    padding: 1rem;
 }
 
-/* colors*/
+/* Colors*/
+
 :root {
     --h1: #d16b74;
     --h2: #C12020;
@@ -19,23 +21,22 @@ body{
     --accent1: #F54F50;
 }
 
-/* images */
+/* Gallary Imgs */
+
 img {
     width: 100%;
     height: auto;
 }
 
-/* header */
-h1 {
-    text-align: center;
-}
-
-.coloring-page {
+header {
+    height: 10%;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-/* home page grid */
+/* Home Page Grid */
+
 .image-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -54,7 +55,8 @@ h1 {
     border-radius: 10px;
 }
 
-/* media queries home page */
+/* Media Queries - Home Page */
+
 @media screen and (min-width: 500px) {
     .image-grid {
         grid-template-columns: 1fr 1fr 1fr;
@@ -66,28 +68,35 @@ h1 {
     }
 }
 
-/* --------- PAGE 2 ----------- */
+/* --------- COLORING PAGE ----------- */
 
 html, body {
-    /*
-    When a canvas element is used this
-    is necessary to fix html & body size issues
-    */
+    /*When a canvas element is used this
+    is necessary to fix html & body dimension issues*/
     width: 100vw;
     height: 100vh;
 }
 
-canvas {
-    background: url(graphics/DIGM223_An_Christina.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-color: #fff;
-    height: -webkit-fill-available;
+.coloring-page {
+    display: flex;
+    flex-direction: column;
+    height: 90%;
 }
 
-/* colors */
-.colors div {
+canvas {
+    width: fit-content;
+    height: fit-content;
+    width: 100%;
+    max-width: 600px;
+    height: 100%;
+    max-height: 776px;
+
+    background-image: url(graphics/DIGM223_An_Christina.jpg);
+}
+
+/* Swatches */
+
+.color {
     background-color: grey;
     border: solid 3px white;
     border-radius: 5rem;
@@ -95,20 +104,25 @@ canvas {
     height: 1.75rem;
 }
 
-/* icons */
+.color[type="color"] {
+    opacity: 0;
+    z-index: 0;
+}
+
+[stack] {
+    position: absolute;
+    width: 1.75rem;
+    z-index: 1;
+}
+
+/* Icons */
 
 .iconify {
     font-size: 1.75rem;
     color: white;
 }
 
-/* Toolbar */
-
-.toolbar:first-of-type {
-    justify-content: flex-start;
-    align-items: flex-start;
-    border-radius: 10px 10px 0 0;
-}
+/* Toolbars */
 
 .toolbar {
     display: flex;
@@ -121,11 +135,14 @@ canvas {
     border-radius: 0 0 10px 10px;
 }
 
-.tools:first-of-type {
-    border-left: none;
-    width: 100%;
+#toolbar_1 {
+    /* Defined them by ID because there are colors and tools, helps to separate them -Hunter */
     justify-content: flex-start;
+    align-items: flex-start;
+    border-radius: 10px 10px 0 0;
 }
+
+/* Tool Sets */
 
 .tools {
     display: flex;
@@ -137,10 +154,75 @@ canvas {
     padding-left: 1.5rem;
 }
 
+#tools_1 {
+    border: none;
+    width: 100%;
+    justify-content: flex-start;
+}
+
 .colors {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
     width: 80%;
+}
+
+/* Hover States */
+
+.color, .iconify, [stack] {
+    /* Standard smooth transition, add elements to list to apply effect */
+    transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+}
+
+.color:hover, .iconify:hover, [stack]:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+/* Coloring Page Media Queries */
+
+@media only screen and (min-width: 650px) {
+    .coloring-page {
+        flex-direction: row;
+    }
+
+    .toolbar, .tools, .colors {
+        flex-direction: column;
+    }
+
+    .colors {
+        width: fit-content;
+        height: 60%;
+    }
+
+    .toolbar {
+        width: fit-content;
+        border-radius: 0 10px 10px 0;
+        justify-content: space-between;
+    }
+
+    #toolbar_1 {
+        border-radius: 10px 0 0 10px;
+    }
+
+    .tools {
+        border-top: 2px #fff solid;
+        border-left: none;
+        justify-content: space-around;
+        align-items: center;
+        width: fit-content;
+        height: 15%;
+        padding: 0;
+    }
+
+    #tools_1 {
+        height: 10%;
+        justify-content: space-between;
+    }
+
+    #tools_2 {
+        padding: 1rem 0 0 0;
+    }
 }
