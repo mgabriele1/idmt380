@@ -18,23 +18,33 @@
         <h1>Coloring Book</h1>
     </header>
     <div class="coloring-page">
-        <img src="graphics/DIGM223_An_Christina.jpg" alt="alttext">
-        <div class="tools">
-            <span class="iconify" data-icon="foundation:paint-bucket" data-inline="false"></span>
-            <span class="iconify" data-icon="mdi-eraser" data-inline="false"></span>
-            <span class="iconify" data-icon="dashicons:trash" data-inline="false"></span>
+        <div class="toolbar">
+            <div class="tools">
+                <span class="iconify" data-icon="dashicons:trash" data-inline="false"></span>
+                <span class="iconify" data-icon="dashicons:undo" data-inline="false"></span>
+            </div>
         </div>
-        <div class="colors">
-            <div class="red"> </div>
-            <div class="orange"></div>
-            <div class="yellow"></div>
-            <div class="green"></div>
-            <div class="blue"></div>
-            <div class="purple"></div>
-            <div class="black"></div>
-            <div class="white"></div>
-            <div class="brown"></div>
+        
+        <canvas></canvas>
+
+        <div class="toolbar">
+            <div class="colors">
+                <div id="selected" class="color" data-hex="#0000FF"></div>
+                <div class="color" data-hex="#FF0000"></div>
+                <div class="color" data-hex="#FFFF00"></div>
+                <div class="color" data-hex="#FF6600"></div>
+                <div class="color" data-hex="#00FF00"></div>
+                <div class="color" data-hex="#6600FF"></div>
+                <div class="color" data-hex="#000000"></div>
+                <div class="color" data-hex="#FFFFFF"></div>
+                <div class="color" data-hex="#A0522D"></div>
+            </div>
+            <div class="tools">
+                <span class="iconify" data-icon="foundation:paint-bucket" data-inline="false"></span>
+                <span class="iconify" data-icon="mdi-eraser" data-inline="false"></span>
+            </div>
         </div>
     </div>
 </body>
+<script src="main.js"></script>
 </html>
