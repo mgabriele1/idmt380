@@ -16,24 +16,40 @@ if (canvas.getContext) {
         pos.y = e.clientY;
     }
     
-    const swatches = document.querySelectorAll('.color');
+    const swatches = document.querySelectorAll('.colors');
 
+    // Swatches translated
+
+    const color_data = [
+        colors = {
+            pink: 'rgb(255, 93, 93)',
+            orange1: 'rgb(255, 102, 67)',
+            orange2: 'rgb(255, 142, 49)',
+            yellow: 'rgb(255, 218, 68)',
+            green: 'rgb(145, 255, 89)',
+            teal: 'rgb(0, 255, 208)',
+            blue: 'rgb(66, 81, 254)',
+            purple: 'rgb(124, 0, 249)',
+            purple2: 'rgb(186, 47, 255)'
+        }
+    ];
     
     swatches.forEach(swatch => {
-        swatch.style.backgroundColor = swatch.dataset.hex;
-        // Sets background color of each .color element to hex dataset of itself
+
+        swatch.style.backgroundColor = colors[swatch.dataset.hex];
+        // Sets background color of each .colors element to hex dataset of itself
 
         swatch.addEventListener('click', () => {
             // If clicked do the following
 
             swatches.forEach(swatch => {
-                // For each .color element, check for id="selected" and remove it
+                // For each .colors element, check for id="selected" and remove it
                 if (swatch.hasAttribute('id')) {
                     swatch.removeAttribute('id', 'selected');
                 }
             });
             swatch.setAttribute('id', 'selected');
-            // Sets id of clicked .color element to "selected"
+            // Sets id of clicked .colors element to "selected"
 
             if (swatch.hasAttribute('type', 'color')) {
                 console.log('New Brush Color = ' + swatch.value);
@@ -45,7 +61,7 @@ if (canvas.getContext) {
     });
 
     // Set default swatch
-    const default_swatch = document.querySelectorAll('.color')[0];
+    const default_swatch = document.querySelectorAll('.colors')[0];
     default_swatch.setAttribute('id', 'selected');
 
 canvas_wrap = document.querySelector('#canvas-wrap');
@@ -72,11 +88,8 @@ setCanvasBG();  //bg color
 // Window resize
 function resizeWindow(){
 
-    console.log('Canvas height = ' + canvas_wrap.clientHeight);
-    console.log('Canvas width = ' + canvas_wrap.clientWidth);
-
-	canvas.style.width  = canvas_wrap.clientWidth;
-	canvas.style.height = canvas_wrap.clientHeight;
+	canvas.style.width  = canvas.clientWidth;
+	canvas.style.height = canvas.clientHeight;
     setCanvasBG();
     $('p').show();
 }

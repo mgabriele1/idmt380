@@ -20,41 +20,30 @@
 <!--BODY-->
 <body>
     <header id="top">
-        <h1>Coloring Book</h1>
+            <img src="graphics/logo.png" id="logo">
     </header>
     <div class="coloring-page">
-        <div class="toolbar" id="toolbar_1">
-            <div class="tools" id="tools_1">
-                <span id="btn-trash" class="iconify" data-icon="dashicons:trash" data-inline="false"></span>
-                <span id="btn-undo" class="iconify" data-icon="dashicons:undo" data-inline="false"></span>
-                <span id="btn-undo" class="iconify" data-icon="entypo:share-alternitive" data-inline="false"></span>
-            </div>
+        <canvas id="canvas">
+            <img src="graphics/DIGM223_An_Christina.jpg" alt="alttext" class="coloring_image">
+        </canvas>
+        <div class="tools">
+            <span class="iconify" id="btn-fill" data-icon="foundation:paint-bucket" data-inline="false"></span>
+            <span class="iconify" id="btn-erase" data-icon="mdi-eraser" data-inline="false"></span>
+            <span class="iconify" id="btn-trash" data-icon="dashicons:trash" data-inline="false"></span>
         </div>
-        
-        <div class="hello" id="canvas-wrap">
-            <canvas id="canvas"></canvas>
-        </div>
+        <div class="all_colors">
+            <svg class="color-wheel" stack xmlns="http://www.w3.org/2000/svg" viewBox="0 0 231.36 231.36"><defs/><g data-name="Layer 2"><g data-name="Layer 1"><path fill="#f47c20" d="M197.69 34.1a115.32 115.32 0 00-82-34.1v116.11z"/><path fill="#fdce0a" d="M197.69 34.1l-82 82h115.66v-.43a115.3 115.3 0 00-33.66-81.57z"/><path fill="#65af45" d="M197.26 197.69a115.28 115.28 0 0034.09-81.58H115.68z"/><path fill="#029695" d="M115.68 231.36a115.3 115.3 0 0081.58-33.67l-81.58-81.58z"/><path fill="#4f61ac" d="M34.1 197.69a115.3 115.3 0 0081.58 33.67V116.11z"/><path fill="#6b449b" d="M0 116.11a115.28 115.28 0 0034.1 81.58l81.58-81.58z"/><path fill="#a43393" d="M33.67 34.1A115.3 115.3 0 000 115.68v.43h115.68z"/><path fill="#e12526" d="M115.68 0a115.32 115.32 0 00-82 34.1l82 82z"/></g></g></svg>
+                <input class="colors" type="color">
 
-        <div class="toolbar"  id="toolbar_2">
-            <div class="colors">
-                <!-- Change value of data-hex to whatever color you want -->
-                <svg class="color-wheel" stack xmlns="http://www.w3.org/2000/svg" viewBox="0 0 231.36 231.36"><defs/><g data-name="Layer 2"><g data-name="Layer 1"><path fill="#f47c20" d="M197.69 34.1a115.32 115.32 0 00-82-34.1v116.11z"/><path fill="#fdce0a" d="M197.69 34.1l-82 82h115.66v-.43a115.3 115.3 0 00-33.66-81.57z"/><path fill="#65af45" d="M197.26 197.69a115.28 115.28 0 0034.09-81.58H115.68z"/><path fill="#029695" d="M115.68 231.36a115.3 115.3 0 0081.58-33.67l-81.58-81.58z"/><path fill="#4f61ac" d="M34.1 197.69a115.3 115.3 0 0081.58 33.67V116.11z"/><path fill="#6b449b" d="M0 116.11a115.28 115.28 0 0034.1 81.58l81.58-81.58z"/><path fill="#a43393" d="M33.67 34.1A115.3 115.3 0 000 115.68v.43h115.68z"/><path fill="#e12526" d="M115.68 0a115.32 115.32 0 00-82 34.1l82 82z"/></g></g></svg>
-                <input class="color" type="color">
-
-                <div class="color" data-hex="#000000"></div>
-                <div class="color" data-hex="#FFFFFF"></div>
-                <div class="color" data-hex="#FF0000"></div>
-                <div class="color" data-hex="#FF6600"></div>
-                <div class="color" data-hex="#FFFF00"></div>
-                <div class="color" data-hex="#00FF00"></div>
-                <div class="color" data-hex="#0000FF"></div>
-                <div class="color" data-hex="#6600FF"></div>
-                <div class="color" data-hex="#A0522D"></div>
-            </div>
-            <div class="tools" id="tools_2">
-                <span id="btn-bucket" class="iconify" data-icon="foundation:paint-bucket" data-inline="false"></span>
-                <span id="btn-erase" class="iconify" data-icon="mdi-eraser" data-inline="false"></span>
-            </div>
+            <div class="colors" data-hex="pink"></div>
+            <div class="colors" data-hex="orange1"></div>
+            <div class="colors" data-hex="orange2"></div>
+            <div class="colors" data-hex="yellow"></div>
+            <div class="colors" data-hex="green"></div>
+            <div class="colors" data-hex="teal"></div>
+            <div class="colors" data-hex="blue"></div>
+            <div class="colors" data-hex="purple"></div>
+            <div class="colors" data-hex="purple2"></div>
         </div>
     </div>
 </body>

@@ -6,36 +6,47 @@
     padding: 0;
 }
 
-body{
+body {
     width: 100%;
-    background-color: wheat;
-    padding: 1rem;
+    background-image: linear-gradient(var(--pink), var(--yellow), var(--teal), var(--purple2) );
+    padding: 2rem;
+    margin: 1rem auto;
+    max-width: 1000px;
 }
 
-/* Colors*/
+/* Color Variables */
 
 :root {
     --h1: #d16b74;
     --h2: #C12020;
     --dark: #212121;
     --accent1: #F54F50;
+
+    --pink: rgb(255, 93, 93);
+    --orange: rgb(255, 102, 67);
+    --orange2: rgb(255, 142, 49);
+    --yellow: rgb(255, 218, 68);
+    --green: rgb(145, 255, 89);
+    --teal: rgb(0, 255, 208);
+    --blue: rgb(66, 81, 254);
+    --purple: rgb(124, 0, 249);
+    --purple2: rgb(186, 47, 255);
 }
 
-/* Gallary Imgs */
+/* Images */
 
 img {
     width: 100%;
     height: auto;
 }
 
-header {
-    height: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Header */
+
+h1 {
+    text-align: center;
 }
 
-/* Home Page Grid */
+/* Home page grid */
 
 .image-grid {
     display: grid;
@@ -45,77 +56,96 @@ header {
     max-width: 1400px;
     margin: 0 auto;
 }
-
 .image-grid a {
     padding: 1rem 0 0 1rem;
 }
-
 .image-grid img {
     box-shadow: 4px 4px 4px 3px #00000046;
     border-radius: 10px;
 }
 
-/* Media Queries - Home Page */
+.thumbnails{
+    margin: .5rem;
+}
 
-@media screen and (min-width: 500px) {
+/* media queries home page */
+
+@media screen and (max-width: 450px) {
+    .image-grid {
+        grid-template-columns: 1fr;
+    }
+    #logo{
+        max-width: 200px;
+        padding: 0 2rem .5rem;
+    }
+}
+@media screen and (min-width: 450px) {
+    .image-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    #logo{
+        max-width: 200px;
+        padding: 0 2rem .5rem;
+    }
+}
+@media screen and (min-width: 650px) {
     .image-grid {
         grid-template-columns: 1fr 1fr 1fr;
     }
+    #logo{
+        max-width: 250px;
+        padding: 0 2rem 1rem;
+    }
 }
-@media screen and (min-width: 850px) {
+@media screen and (min-width: 1000px) {
     .image-grid {
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 }
 
-/* --------- COLORING PAGE ----------- */
-
-html, body {
-    /*When a canvas element is used this
-    is necessary to fix html & body dimension issues*/
-    width: 100vw;
-    height: 100vh;
-}
+/* --------- PAGE 2 ----------- */
 
 .coloring-page {
-    display: flex;
-    flex-direction: column;
-    /* height: fit-content;
-    width: fit-content; */
-    margin: auto;
+    display: grid;
+    max-width: 100vw;
+    margin: 1rem;
+    background-color: white;
+    border-radius: 10px;
 }
 
-#canvas-wrap {
-    background-image: url(graphics/DIGM223_An_Christina.jpg);
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 100%;
-    max-height: 90%;
+.coloring_image {
+    padding: 1rem;
 }
 
-canvas {
-    width: 100%;
-    height: 100%;
-}
+/* Colors */
 
-/* Swatches */
-
-.color {
-    background-color: grey;
-    border: solid 3px white;
+.colors {
+    border: solid 2px white;
     border-radius: 5rem;
-    width: 1.75rem;
-    height: 1.75rem;
+    width: 2rem;
+    height: 2rem;
+    margin: .2rem;
 }
 
-.color[type="color"] {
+.all_colors {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    background-color: rgba(0, 0, 0, 0.658);
+    padding: 1rem;
+    justify-self: flex-end;
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+}
+
+.colors[type="color"] {
     opacity: 0;
     z-index: 0;
 }
 
 [stack] {
     position: absolute;
-    width: 1.75rem;
+    width: 2rem;
     z-index: 1;
 }
 
@@ -123,110 +153,73 @@ canvas {
 
 .iconify {
     font-size: 1.75rem;
-    color: white;
+    margin: 0 .5rem;
 }
-
-/* Toolbars */
-
-.toolbar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.658);
-    padding: .75rem;
-    width: 100%;
-    border-radius: 0 0 10px 10px;
-}
-
-#toolbar_1 {
-    /* Defined them by ID because there are colors and tools, helps to separate them -Hunter */
-    justify-content: flex-start;
-    align-items: flex-start;
-    border-radius: 10px 10px 0 0;
-}
-
-/* Tool Sets */
-
 .tools {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    width: 20%;
-    border-left: 2px #fff solid;
-    padding-left: 1.5rem;
-}
-
-#tools_1 {
-    border: none;
-    width: 100%;
-    justify-content: flex-start;
-}
-
-.colors {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    width: 80%;
+    flex-flow: row ;
+    justify-content: flex-end;
+    align-items: baseline;
+    padding: 0 0 1rem;
 }
 
 /* Hover States */
 
-.color, .iconify, [stack] {
+.colors, .iconify, [stack] {
     /* Standard smooth transition, add elements to list to apply effect */
     transition: all .2s ease-in-out;
     -webkit-transition: all .2s ease-in-out;
 }
 
-.color:hover, .iconify:hover, [stack]:hover {
+.colors:hover, .iconify:hover, [stack]:hover {
     transform: scale(1.1);
     cursor: pointer;
 }
 
-/* Coloring Page Media Queries */
+/* Media Queries */
 
-@media only screen and (min-width: 650px) {
-    .coloring-page {
-        flex-direction: row;
+@media screen and (min-width: 282px){
+    .all_colors{
+        padding: 1rem 2rem;
     }
-
-    .toolbar, .tools, .colors {
-        flex-direction: column;
+}
+@media screen and (min-width: 292px){
+    .all_colors{
+        padding: 1rem 2.5rem;
     }
-
-    .colors {
-        width: fit-content;
-        height: 60%;
+}
+@media screen and (min-width: 310px){
+    .all_colors{
+        padding: 1rem 3rem;
     }
-
-    .toolbar {
-        width: fit-content;
-        border-radius: 0 10px 10px 0;
-        justify-content: space-between;
+}
+@media screen and (min-width: 346px){
+    .all_colors{
+        padding: 1rem 1.75rem;
     }
-
-    #toolbar_1 {
-        border-radius: 10px 0 0 10px;
+}
+@media screen and (min-width: 384px){
+    .all_colors{
+        padding: 1rem 2.5rem;
     }
-
-    .tools {
-        border-top: 2px #fff solid;
-        border-left: none;
-        justify-content: space-around;
-        align-items: center;
-        width: fit-content;
-        height: 15%;
-        padding: 0;
+}
+@media screen and (min-width: 407px){
+    .all_colors{
+        padding: 1rem 3rem;
     }
-
-    #tools_1 {
-        height: 15%;
-        justify-content: space-between;
+}
+@media screen and (min-width: 423px){
+    .all_colors{
+        padding: 1rem 3.5rem;
     }
-
-    #tools_2 {
-        padding: 1rem 0 0 0;
+}
+@media screen and (min-width: 439px){
+    .all_colors{
+        padding: 1rem 4.5rem;
+    }
+}
+@media screen and (min-width: 474px){
+    .all_colors{
+        padding: 1rem 1rem;
     }
 }
