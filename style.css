@@ -80,18 +80,22 @@ html, body {
 .coloring-page {
     display: flex;
     flex-direction: column;
-    height: 90%;
+    /* height: fit-content;
+    width: fit-content; */
+    margin: auto;
+}
+
+#canvas-wrap {
+    background-image: url(graphics/DIGM223_An_Christina.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    max-height: 90%;
 }
 
 canvas {
-    width: fit-content;
-    height: fit-content;
     width: 100%;
-    max-width: 600px;
     height: 100%;
-    max-height: 776px;
-
-    background-image: url(graphics/DIGM223_An_Christina.jpg);
 }
 
 /* Swatches */
@@ -218,7 +222,7 @@ canvas {
     }
 
     #tools_1 {
-        height: 10%;
+        height: 15%;
         justify-content: space-between;
     }
 

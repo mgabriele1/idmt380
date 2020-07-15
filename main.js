@@ -1,4 +1,4 @@
-var canvas = document.querySelector('canvas');
+var canvas = document.querySelector('#canvas');
 
 if (canvas.getContext) {
     var context = canvas.getContext('2d');
@@ -9,19 +9,6 @@ if (canvas.getContext) {
     document.addEventListener('mouseenter', setPosition);
     document.addEventListener('mousedown', setPosition);
     document.addEventListener('mousemove', draw);
-    
-    // window.addEventListener('resize', resizeCanvas);
-    // resizeCanvas();
-    
-    // // Resize Canvas
-    
-    // function resizeCanvas() {
-    //     // context.canvas.width = canvas.clientWidth;
-    //     // context.canvas.height = canvas.clientHeight;
-
-    //     context.canvas.width = 512;
-    //     context.canvas.height = 512;
-    // }
     
     function setPosition(e) {
         // Sets mouse position while moving
@@ -60,34 +47,91 @@ if (canvas.getContext) {
     // Set default swatch
     const default_swatch = document.querySelectorAll('.color')[0];
     default_swatch.setAttribute('id', 'selected');
+
+canvas_wrap = document.querySelector('#canvas-wrap');
+
+resizeWindow();
+
+// Default position
+
+    var DefaultPos = {x:0, y:0};
+
+window.addEventListener('resize', resizeWindow);
+document.addEventListener('mousemove', draw);
+document.addEventListener('mousedown', setPosition);
+document.addEventListener('mouseenter', setPosition);
+
+function setCanvasBG(){
+	context.beginPath();
+    context.rect(0, 0, canvas.width, canvas.height);
+}
+
+// Initialize canvas items
+setCanvasBG();  //bg color
+
+// Window resize
+function resizeWindow(){
+
+    console.log('Canvas height = ' + canvas_wrap.clientHeight);
+    console.log('Canvas width = ' + canvas_wrap.clientWidth);
+
+	canvas.style.width  = canvas_wrap.clientWidth;
+	canvas.style.height = canvas_wrap.clientHeight;
+    setCanvasBG();
+    $('p').show();
+}
+
+// New mouse event position
+function setPosition(e){
+	DefaultPos.x = e.clientX;
+	DefaultPos.y = e.clientY;
+}
+
+// Drawing canvas object
+function draw(e){
+    // Define left click
+    if (e.buttons !== 1) return;
+
+	context.beginPath(); // Begin path
+    context.lineWidth = 5;
+    context.lineCap = 'round';
+
+    // Find element with id="selected" then set the brush color to its hex dataset
+    var selected_swatch = document.querySelector('#selected');
+
+    // Check if the element selected was color picker or swatch and gets value
+    if (selected_swatch.hasAttribute('type', 'color')) {
+        context.strokeStyle = selected_swatch.value;
+    } else {
+        context.strokeStyle = selected_swatch.dataset.hex;
+    }
     
-    function draw(e)  {
-        if (e.buttons !== 1) return; 
-        // Stop if mouse is not clicked
-        context.lineWidth = 5;
-        context.lineCap = 'round';
+    context.moveTo(DefaultPos.x, DefaultPos.y);
+    setPosition(e);
+    context.lineTo(DefaultPos.x, DefaultPos.y);
+    
+    context.stroke();
+}
 
-        // Find element with id="selected" then set the brush color to its hex dataset
-        var selected_swatch = document.querySelector('#selected');
+// Save canvas
+$("#save").click(function() {
+    var html = " ";
+    html += "<img src='" + canvas.toDataURL() + "' alt='from canvas'/>";
+    var pageStyle = "<style>body{margin:0; padding: 0;}</style>";
+    var tab = window.open();
+    tab.document.write(html + pageStyle);
+});
 
-        // Check if the element selected was color picker or swatch and gets value
-        if (selected_swatch.hasAttribute('type', 'color')) {
-            context.strokeStyle = selected_swatch.value;
-        } else {
-            context.strokeStyle = selected_swatch.dataset.hex;
-        }
-        
-        setPosition(e);
-        
-        context.beginPath();
-        // Begin the drawing path
-        context.moveTo(pos.x, pos.y);
-        // From position
-        context.lineTo(pos.x, pos.y);
-        // To position
-        context.stroke();
-        // Draw the stroke
-    };
+$('canvas, p').click(function(){
+    $('p').hide();
+});
+
+// Clear canvas
+$("#btn-trash").click(function() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+	setCanvasBG();
+    $('p').show();
+});
 
     // Buttons
 
@@ -116,5 +160,5 @@ function move_wheel() {
 };
 
     } else {
-        alert('Canvas is not supported in your browser.')
-    }
+        alert('Canvas is not supported in your browser.');
+    };
