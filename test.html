@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="test.css">
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+    <script
+        src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous">
+    </script>
+</head>
+<body>
+    <div class="toolbox left">
+        <div class="group commands">
+            <span class="iconify item" data-command="undo" title="Undo" data-icon="dashicons:undo" data-inline="false"></span>
+            <span class="iconify item" data-command="download" title="Download" data-icon="dashicons:download" data-inline="false"></span>
+        </div>
+        <div class="group shapes">
+            <span class="iconify item" data-command="line" title="Line" data-icon="dashicons:line" data-inline="false"></span>
+            <span class="iconify item" data-command="rectangle" title="Rectangle" data-icon="dashicons:rectangle" data-inline="false"></span>
+            <span class="iconify item" data-command="circle" title="Circle" data-icon="dashicons:circle" data-inline="false"></span>
+            <span class="iconify item" data-command="triangle" title="Triangle" data-icon="dashicons:triangle" data-inline="false"></span>
+        </div>
+        <div class="group tools">
+            <span class="iconify item" data-command="pencil" title="Pencil" data-icon="dashicons:pencil" data-inline="false"></span>
+            <span class="iconify item" data-command="brush" title="Brush" data-icon="dashicons:brush" data-inline="false"></span>
+            <span class="iconify item" data-command="paint-bucket" title="Paint-Bucket" data-icon="dashicons:bucket" data-inline="false"></span>
+            <span class="iconify item" data-command="eraser" title="eraser" data-icon="dashicons:eraser" data-inline="false"></span>
+        </div>
+        <div class="group linewidth">
+            <span class="item" data-line-width="1" title="1px"></span>
+            <span class="item" data-line-width="5" title="5px"></span>
+            <span class="item" data-line-width="20" title="20px"></span>
+            <span class="item" data-line-width="50" title="50px"></span>
+        </div>
+    </div>
+    <canvas id="canvas" width="640" height="480"></canvas>
+    <div class="toolbox right">
+        <div class="group swatches"></div>
+    </div>
+</body>
+</html>
