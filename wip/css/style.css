@@ -1,114 +1,104 @@
-* {
-    color: white;
+/* INDEX */
+
+*, *:before, *:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-html, body, main {
-    height: 100%;
+body {
     width: 100%;
+    background-image: linear-gradient(var(--pink), var(--yellow), var(--teal), var(--purple2) );
+    padding: 2rem;
+    margin: 1rem auto;
+    max-width: 1000px;
 }
 
-main {
-    display: flex;
-    flex-direction: column;
+/* Color Variables */
+
+:root {
+    --h1: #d16b74;
+    --h2: #C12020;
+    --dark: #212121;
+    --accent1: #F54F50;
+
+    --pink: rgb(255, 93, 93);
+    --orange: rgb(255, 102, 67);
+    --orange2: rgb(255, 142, 49);
+    --yellow: rgb(255, 218, 68);
+    --green: rgb(145, 255, 89);
+    --teal: rgb(0, 255, 208);
+    --blue: rgb(66, 81, 254);
+    --purple: rgb(124, 0, 249);
+    --purple2: rgb(186, 47, 255);
 }
 
-.aside {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    height: 3rem;
-    background-color: #202020;
-}
+/* Images */
 
-.main-area {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100% - 6rem);
-    background-color: #f1f1f1;
-}
-
-canvas {
-    background-color: white;
-    max-width: 100%;
-    max-height: 100%;
-    background-image: url(../../graphics/DIGM223_An_Christina.jpg);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-}
-
-.group {
-    width: fit-content;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.item {
-    width: 1.5rem;
-    height: 1.5rem;
-    padding: .25rem;
-    margin: 0 .25rem;
-}
-
-.swatches {
+img {
     width: 100%;
-    justify-content: space-evenly;
+    height: auto;
 }
 
-.swatch {
-    border-radius: 50%;
-    border: #00000000 solid .1rem;
-    /* margin: 0 1rem 0 0; */
+/* Header */
+
+h1 {
+    text-align: center;
 }
 
-.linewidths .item {
-    background-color: white;
-    border-radius: 50%;
+/* Home page grid */
+
+.image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+    padding: 0 1rem 0 0;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+.image-grid a {
+    padding: 1rem 0 0 1rem;
+}
+.image-grid img {
+    box-shadow: 4px 4px 4px 3px #00000046;
+    border-radius: 10px;
 }
 
-.svg {
-    width: 1.5rem;
-    height: 1.5rem;
+.thumbnails{
+    margin: .5rem;
 }
 
-svg {
-    width: 1.5rem;
-    height: 1.5rem;
+/* media queries home page */
+
+@media screen and (max-width: 450px) {
+    .image-grid {
+        grid-template-columns: 1fr;
+    }
+    #logo{
+        max-width: 200px;
+        padding: 0 2rem .5rem;
+    }
 }
-
-input[type="color"] {
-    opacity: 0;
-    z-index: 0;
-    display: none;
+@media screen and (min-width: 450px) {
+    .image-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    #logo{
+        max-width: 200px;
+        padding: 0 2rem .5rem;
+    }
 }
-
-.stack {
-    border: #202020 solid .1rem;
-    border-radius: 50%;
-    transform: scale(1.15);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 231.36 231.36'%3E%3Cdefs/%3E%3Cg data-name='Layer 2'%3E%3Cg data-name='Layer 1'%3E%3Cpath fill='%23f47c20' d='M197.69 34.1a115.32 115.32 0 00-82-34.1v116.11z'/%3E%3Cpath fill='%23fdce0a' d='M197.69 34.1l-82 82h115.66v-.43a115.3 115.3 0 00-33.66-81.57z'/%3E%3Cpath fill='%2365af45' d='M197.26 197.69a115.28 115.28 0 0034.09-81.58H115.68z'/%3E%3Cpath fill='%23029695' d='M115.68 231.36a115.3 115.3 0 0081.58-33.67l-81.58-81.58z'/%3E%3Cpath fill='%234f61ac' d='M34.1 197.69a115.3 115.3 0 0081.58 33.67V116.11z'/%3E%3Cpath fill='%236b449b' d='M0 116.11a115.28 115.28 0 0034.1 81.58l81.58-81.58z'/%3E%3Cpath fill='%23a43393' d='M33.67 34.1A115.3 115.3 0 000 115.68v.43h115.68z'/%3E%3Cpath fill='%23e12526' d='M115.68 0a115.32 115.32 0 00-82 34.1l82 82z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+@media screen and (min-width: 650px) {
+    .image-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    #logo{
+        max-width: 250px;
+        padding: 0 2rem 1rem;
+    }
 }
-
-.active-line-width, .active-mode, .active-shape, .active-command {
-    background-color: #585858;
-}
-
-.active-swatch {
-    border: white solid .1rem;
-}
-
-.for-brush, .for-shapes {
-    /* display: none; */
-}
-
-/* Hovers */
-
-[data-command]:hover, [data-shape]:hover, [data-mode]:hover, [data-linewidth]:hover, [data-brushwidth]:hover {
-    background-color: #585858;
-}
-
-.swatch:hover, .stack:hover {
-    border: white solid .1rem;
+@media screen and (min-width: 1000px) {
+    .image-grid {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
 }
