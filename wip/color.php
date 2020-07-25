@@ -1,11 +1,25 @@
+<?php
+    include_once 'includes/db.php';
+
+    $id = $_GET['id'];
+
+    $sql = "SELECT * FROM artwork WHERE id={$id};";
+
+    $result = mysqli_query($connection, $sql);
+    $resultCheck = mysqli_num_rows($result);
+    if ($resultCheck > 0) {
+        if ($row = mysqli_fetch_assoc($result)) {
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WIP</title>
-    <link rel="stylesheet" href="../css/normalize.css">
-    <link rel="stylesheet" href="css/style.css">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WIP</title>
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="scripts/main.js" defer></script>
 </head>
 <body>
     <main>
@@ -31,12 +45,12 @@
                 <div class="item line-width" data-linewidth="2px"></div>
             </div>
             <div class="group linewidths for-brush">
-                <div class="item brush-width" data-brushwidth="1rem"></div>
-                <div class="item brush-width" data-brushwidth="1.5rem"></div>
+                <div class="item brush-size" data-brushsize="1rem"></div>
+                <div class="item brush-size" data-brushsize="1.5rem"></div>
             </div>
         </div>
         <div class="main-area">
-            <canvas id="canvas" width="600" height="776"></canvas>
+            <canvas id="canvas" width="600" height="776" style="background-image: url(graphics/artwork/<?php echo $row['image']; ?>);"></canvas>
         </div>
         <div class="aside">
             <div class="group swatches">
@@ -56,5 +70,8 @@
         </div>
     </main>
 </body>
-<script src="scripts/main.js"></script>
+<?php
+            }
+        }
+    ?>
 </html>
