@@ -96,7 +96,7 @@ h1 {
         padding: 0 2rem 1rem;
     }
 }
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 900px) {
     .image-grid {
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
@@ -107,7 +107,7 @@ h1 {
 .coloring-page {
     display: grid;
     max-width: 100vw;
-    margin: 1rem;
+    margin: 1rem auto;
     background-color: white;
     border-radius: 10px;
 }
@@ -215,9 +215,13 @@ input[type="color"] {
     .all_colors{
         padding: 1rem 4.5rem;
     }
+    .coloring-page {
+    max-width: 550px;
+    }
 }
 @media screen and (min-width: 474px){
     .all_colors{
         padding: 1rem 1rem;
     }
+    
 }
