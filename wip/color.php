@@ -50,7 +50,7 @@
             </div>
         </div>
         <div class="main-area">
-            <canvas id="canvas" width="600" height="776" style="background-image: url(graphics/artwork/<?php echo $row['image']; ?>);"></canvas>
+            <canvas id="canvas" width="600" height="776"  style="background-image: url(graphics/artwork/<?php echo $row['image']; ?>);"></canvas>
         </div>
         <div class="aside">
             <div class="group swatches">

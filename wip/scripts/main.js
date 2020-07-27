@@ -306,6 +306,7 @@ class Paint {
         if (this.tool == 'pencil' || this.tool == 'brush') {
             this.context.beginPath();
             this.context.moveTo(this.startPos.x, this.startPos.y)
+            this.context.lineCap = 'round';
         } else if (this.tool == 'fill') {
             new Fill(this.canvas, this.startPos, this.color);
         } else if (this.tool == 'eraser') {
@@ -387,10 +388,10 @@ class Paint {
 
 var paint = new Paint('canvas');
 paint.activeTool = 'line';
+// concern
 paint.lineWidth = 1;
 paint.brushSize = 16;
 paint.selectedColor = '#000000';
-// concern
 paint.init();
 
 // Utility
