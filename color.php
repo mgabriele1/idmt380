@@ -33,6 +33,11 @@
                 <div class="item command" data-command="undo"><img class="svg" src="graphics/undo.svg" alt="undo"></div>
                 <div class="item command" data-command="download"><img class="svg" src="graphics/download.svg" alt="download"></div>
             </div>
+            <div class="group">
+                <div class="credit">
+                    <p>Artwork by: <?php echo $row['artist'] ?></p>
+                </div>
+            </div>
         </div>
         <div class="main-area">
             <?php include_once 'graphics/artwork/'.$row['image']; ?>
