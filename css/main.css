@@ -207,6 +207,14 @@ input[type="color"] {
     border: white solid .1rem;
 }
 
+.credit {
+    margin-right: .5rem;
+}
+
+.credit * {
+    font-family: sans-serif;
+}
+
 /* Hovers */
 
 [data-command]:hover {
