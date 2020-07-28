@@ -1,5 +1,5 @@
 # General
-.DS_Store
+*.DS_Store
 .AppleDouble
 .LSOverride
 .DS_Store?
@@ -58,6 +58,7 @@ Temporary Items
 *.log
 *.sql
 *.sqlite
+db.php
 
 # Compiled source #
 ###################
