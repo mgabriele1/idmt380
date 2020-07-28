@@ -28,6 +28,11 @@ main {
     background-color: #f1f1f1;
 }
 
+.main-area svg {
+    width: auto;
+    height: 100%;
+}
+
 canvas {
     background-color: white;
     max-width: 100%;
