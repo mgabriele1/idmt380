@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coloring Book</title>
     <link rel="stylesheet" href="css/normalize.css" type="text/css"/>
-    <link rel="stylesheet" href="css/style.css" type="text/css"/>
+    <link rel="stylesheet" href="css/main.css" type="text/css"/>
 </head>
 
 <!--BODY-->
@@ -35,7 +35,7 @@
                 ?>
     </div>
     <footer>
-        <a href="#top">Return to Top</a>
+        <a class="back-to-top" href="#top">Return to Top</a>
     </footer>
 </body>
 </html>

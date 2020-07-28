@@ -12,7 +12,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="coloring-page">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,8 +26,8 @@
         </script>
         <script src="scripts/main.js" defer></script>
 </head>
-<body>
-    <main>
+<body class="coloring-page">
+    <main class="coloring-page">
         <div class="aside">
             <div class="group commands">
                 <div class="item command" data-command="undo"><img class="svg" src="graphics/undo.svg" alt="undo"></div>
