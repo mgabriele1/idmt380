@@ -25,7 +25,7 @@
                         while ($row = mysqli_fetch_assoc($result)) {
 
                                 echo "<a href='color.php?id={$row['id']}' class='thumbnails'>";
-                                echo    "<img src='graphics/artwork/{$row['image']}' alt='{$row['artist']}'>";
+                                echo "<img src='graphics/artwork/{$row['image']}' alt='{$row['artist']}'>";
                                 echo "</a>";
 
                         }

@@ -18,11 +18,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>WIP</title>
         <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/style.css">
         <script src="scripts/main.js" defer></script>
 </head>
 <body>
+<div id="logo"> <a href="index.php"><img src="graphics/logo.png"> </a></div>
     <main>
+        <div id="colorpage">
         <div class="aside">
             <div class="group commands">
                 <div class="item command" data-command="undo"><img class="svg" src="graphics/undo.svg" alt="undo"></div>
@@ -67,6 +69,7 @@
                 <div class="item swatch" data-swatch="rgb(255, 102, 67)"></div>
                 <div class="item swatch" data-swatch="rgb(255, 93, 93)"></div>
             </div>
+        </div>
         </div>
     </main>
 </body>
