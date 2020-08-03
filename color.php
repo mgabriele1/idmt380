@@ -47,7 +47,7 @@
                 <div class="item stack"></div>
                 <input type="color" class="item" title="Color Picker">
 
-                <div class="item swatch" data-swatch="#ba2fff"></div>
+                <div class="item swatch active" data-swatch="#ba2fff"></div>
                 <div class="item swatch" data-swatch="#7d00f9"></div>
                 <div class="item swatch" data-swatch="#4252fe"></div>
                 <div class="item swatch" data-swatch="#00ffd0"></div>
