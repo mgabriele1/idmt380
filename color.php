@@ -58,6 +58,7 @@
                 <div class="item swatch" data-swatch="#ff5d5d"></div>
             </div>
         </div>
+        </div>
     </main>
 </body>
 </html>
