@@ -73,9 +73,9 @@ download_btn.addEventListener('click', () => {
 // Clicking Undo >>> Delete current svg on page, inject Versions[1] to canvas, delete Versions[0]
 
 const main_area = document.querySelector(".main-area");
-const svg = document.querySelector("svg");
+const svg = main_area.childNodes[1];
 
-let versions = [svg]; // Init the Versions Array, put default as first element in Versions
+let versions = [svg.cloneNode(true)]; // Init the Versions Array, put default as first element in Versions
 
 // Edit Push to Versions
 
@@ -83,7 +83,8 @@ function push_version() {
     if (versions.length == 5) { // 5 = Max undo
         versions.pop(); // Removes last element in Versions
     }
-    versions.splice(0, 0, svg); // Adds current SVG to beginning of Versions
+    var v_svg = svg.cloneNode(true);
+    versions.unshift(v_svg); // Adds current SVG to beginning of Versions
     console.log(versions);
 }
 
@@ -94,9 +95,27 @@ function undo() {
     if (versions.length == 0) {
         alert('You cannot undo any further!');
     } else {
-        svg.remove(); // Remove current SVG on page
-        main_area.appendChild(versions[1]); // Insert last version into canvas area
-        versions.shift(); // Deletes first element in Versions
-        console.log(versions);
+        remove_all_svg(); // Removes all SVG's even if multiple on page
+        console.log('removing SVGs');
+        setTimeout(function(){
+            versions.shift(); // Deletes first element in Versions
+            setTimeout(function(){
+                main_area.appendChild(versions[0]); // Insert last version into canvas area
+                console.log('appending');
+                setTimeout(function(){
+                    console.log('logging'+versions);
+                }, 3000);
+            }, 3000);
+        }, 3000);
+    }
+}
+
+function remove_all_svg() {
+    if (main_area.childElementCount > 1) {
+        document.querySelectorAll('svg').forEach(child => {
+            child.remove();
+        });
+    } else {
+        document.querySelectorAll('svg').remove();
     }
 }
