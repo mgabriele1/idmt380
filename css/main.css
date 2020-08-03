@@ -8,7 +8,7 @@
 
 body {
     width: 100%;
-    background-image: linear-gradient(var(--pink), var(--yellow), var(--teal), var(--purple2) );
+    background-image: linear-gradient(var(--pink), var(--yellow), var(--teal), var(--purple2), var(--teal), var(--yellow), var(--pink) );
     padding: 2rem;
     margin: 1rem auto;
     max-width: 1000px;
@@ -56,7 +56,9 @@ h1 {
     max-width: 1400px;
     margin: 0 auto;
 }
-
+.image-grid a {
+    padding: 1rem 0 0 1rem;
+}
 .image-grid img {
     box-shadow: 4px 4px 4px 3px #00000046;
     border-radius: 10px;
@@ -137,6 +139,15 @@ main {
     justify-content: space-between;
     height: 3rem;
     background-color: #202020;
+    border-radius: 10px 10px 0 0;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+.aside:last-child{
+    border-radius: 0 0 10px 10px;
+
 }
 
 .main-area {
@@ -160,8 +171,8 @@ main {
 }
 
 .item {
-    width: 2rem;
-    height: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
     padding: .25rem;
     margin: 0 .25rem;
 }
