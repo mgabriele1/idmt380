@@ -68,3 +68,9 @@ db.php
 *.exe
 *.o
 *.so
+
+# Gulp #
+###################
+
+node_modules
+package-lock.json
