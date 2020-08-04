@@ -5,20 +5,22 @@ color_wheel.addEventListener('click', () => {
     color_picker.click(); // The color input is hidden, so if you click the picker, redirect the click to the input
 });
 
+function reset_active_swatch() {
+    var active_swatch = document.querySelector('.swatch.active'); // Reset the active swatch
+    if (active_swatch) {
+        active_swatch.classList.remove('active'); // Remove the active class from the active swatch
+    }
+}
+
 // SWATCHES
 const swatches = document.querySelectorAll('.swatch'); // Create Swatches Array
 
 swatches.forEach(swatch => {
     swatch.style.backgroundColor = swatch.dataset.swatch; // Set bck color to data HTML data-swatch
     swatch.setAttribute('title', swatch.dataset.swatch); // Add a hover title box
-    
-    // Color Mode = Picker
     swatch.addEventListener('click', () => {
-        if (document.querySelector('.swatch.active')) { // If a .active swatch exists
-            document.querySelector('.swatch.active').classList.remove('active'); // Remove the class .swatch from it
-        }
+        reset_active_swatch();
         swatch.classList.add('active'); // Set the clicked swatch to the active swatch
-
         color_mode = 'swatch'; // Set the color mode to Swatch
         new_swatch = swatch; // Set the new swatch
     })
@@ -26,6 +28,7 @@ swatches.forEach(swatch => {
 
 color_picker.addEventListener('click', () => {
     color_mode = 'picker'; // Set the color mode to Picker
+    reset_active_swatch();
 });
 
 // Init color mode, set picker value to value of first swatch
@@ -95,27 +98,8 @@ function undo() {
     if (versions.length == 0) {
         alert('You cannot undo any further!');
     } else {
-        remove_all_svg(); // Removes all SVG's even if multiple on page
-        console.log('removing SVGs');
-        setTimeout(function(){
-            versions.shift(); // Deletes first element in Versions
-            setTimeout(function(){
-                main_area.appendChild(versions[0]); // Insert last version into canvas area
-                console.log('appending');
-                setTimeout(function(){
-                    console.log('logging'+versions);
-                }, 3000);
-            }, 3000);
-        }, 3000);
-    }
-}
-
-function remove_all_svg() {
-    if (main_area.childElementCount > 1) {
-        document.querySelectorAll('svg').forEach(child => {
-            child.remove();
-        });
-    } else {
-        document.querySelectorAll('svg').remove();
+        svg.remove(); // Removes the SVG on page
+        versions.shift(); // Deletes first element in Versions
+        main_area.appendChild(versions[0]); // Insert last version into canvas area
     }
 }

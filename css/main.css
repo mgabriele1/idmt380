@@ -126,6 +126,7 @@ footer {
     width: 100vw;
     padding: 0;
     margin: 0;
+    background-color: #202020;
 }
 
 main {
@@ -143,8 +144,8 @@ main {
 
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-evenly;
 }
+
 .aside:last-child{
     border-radius: 0 0 10px 10px;
 
@@ -168,6 +169,7 @@ main {
     display: flex;
     flex-direction: row;
     align-items: center;
+    max-width: 50rem;
 }
 
 .item {
@@ -179,6 +181,7 @@ main {
 .swatches {
     width: 100%;
     justify-content: space-evenly;
+    margin: auto;
 }
 
 .swatch {
