@@ -88,3 +88,9 @@ ALTER TABLE `artwork`
 
 5. No additional action required, navigate to your local server and test!
 > Most likely -> http://localhost:8888/
+
+### [Optional] Enable Watch
+
+1. Simply  un-comment line 10 in gulpfile.js and run command `gulp` again to have your Command Line watch for file changes like saves
+
+	To stop the watch process, press Ctrl + C
