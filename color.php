@@ -27,7 +27,8 @@
         <script src="scripts/main.js" defer></script>
 </head>
 <body class="coloring-page">
-    <main class="coloring-page">
+<div id="logo"> <a href="index.php"><img src="graphics/logo.png"> </a></div>
+    <main class="coloring-page" id="colorpage">
         <div class="aside">
             <div class="group commands">
                 <div class="item command" data-command="undo"><img class="svg" src="graphics/undo.svg" alt="undo"></div>
