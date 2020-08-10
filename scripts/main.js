@@ -45,37 +45,47 @@ function choose_color() {
     }
 }
 
+// -------------------------------
 // FILL TOOL
-$('svg').click(function(event) {
+// -------------------------------
+const main_area = document.querySelector(".main-area");
+var artwork = document.querySelector(".main-area svg");
+
+main_area.addEventListener('click', (event) => {
+    // Click listener is set to main area because the SVG gets removed and appended,
+    // that would break the listener if it were set to the SVG,
+    // var 'event' is a sub variable that gets redefined each click
     choose_color();
     event.target.style.fill = color;
     push_version();
+    console.log('you clicked');
 });
 
+// -------------------------------
 // DOWNLOAD THE PAINTING
+// -------------------------------
+
 const download_btn = document.querySelector('[data-command="download"]');
 
 download_btn.addEventListener('click', () => {
-    // const dl_svg = document.querySelector(".main-area").innerHTML;
-    const dl_svg = versions[4];
-    const blob = new Blob([dl_svg.toString()]);
+    const dl_artwork = document.querySelector(".main-area").innerHTML;
+    const blob = new Blob([dl_artwork.toString()]);
     const element = document.createElement("a");
-    element.download = "My-Coloring-Book.svg";
+    element.download = "My-Coloring-Book.artwork";
     element.href = window.URL.createObjectURL(blob);
     element.click();
     element.remove();
 });
 
+// -------------------------------
 // UNDO FUNCTION
-
-// ----- Logic -----
+//
+// Logic:
 // Clicking Edit >>> If Versions Array length is 5, delete last in Versions Array, then push the new edit to beginning
-// Clicking Undo >>> Delete current svg on page, inject Versions[1] to canvas, delete Versions[0]
+// Clicking Undo >>> Delete current artwork on page, inject Versions[0] to main-area, delete Versions[0]
+// -------------------------------
 
-const main_area = document.querySelector(".main-area");
-const svg = main_area.childNodes[1];
-
-let versions = [svg.cloneNode(true)]; // Init the Versions Array, put default as first element in Versions
+let versions = [artwork.cloneNode(true)]; // Init the Versions Array, put default as first element in Versions
 
 // Edit Push to Versions
 
@@ -83,8 +93,8 @@ function push_version() {
     if (versions.length == 5) { // 5 = Max undo
         versions.pop(); // Removes last element in Versions
     }
-    var v_svg = svg.cloneNode(true);
-    versions.unshift(v_svg); // Adds current SVG to beginning of Versions
+    var v_artwork = artwork.cloneNode(true);
+    versions.unshift(v_artwork); // Adds current artwork to beginning of Versions
     console.log(versions.length);
 }
 
@@ -92,11 +102,11 @@ const undo_btn = document.querySelector('[data-command="undo"]')
 undo_btn.addEventListener('click', undo);
 
 function undo() {
-    if (versions.length == 0) {
-        alert('You cannot undo any further!');
+    if (versions.length == 1) {
+        alert('There is nothing to undo!');
     } else {
-        svg.remove(); // Removes the SVG on page
+        artwork.remove(); // Removes the artwork on page
         versions.shift(); // Deletes first element in Versions
-        main_area.appendChild(versions[0]); // Insert last version into canvas area
+        main_area.appendChild(versions[0]); // Insert last version into main-area area
     }
 }
