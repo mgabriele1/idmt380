@@ -90,7 +90,7 @@ let versions = [artwork.cloneNode(true)]; // Init the Versions Array, put defaul
 // Edit Push to Versions
 
 function push_version() {
-    if (versions.length == 5) { // 5 = Max undo
+    if (versions.length == 30) { // 30 = Max undo
         versions.pop(); // Removes last element in Versions
     }
     var v_artwork = artwork.cloneNode(true);
@@ -101,12 +101,15 @@ function push_version() {
 const undo_btn = document.querySelector('[data-command="undo"]')
 undo_btn.addEventListener('click', undo);
 
+var x = 0;
+
 function undo() {
     if (versions.length == 1) {
         alert('There is nothing to undo!');
     } else {
-        artwork.remove(); // Removes the artwork on page
+        document.querySelector(".main-area svg").remove(); // Removes the artwork on page
         versions.shift(); // Deletes first element in Versions
+        x = x + 1;
         main_area.appendChild(versions[0]); // Insert last version into main-area area
     }
 }
