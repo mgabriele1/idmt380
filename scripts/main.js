@@ -38,15 +38,11 @@ choose_color(); // Init the color_mode
 
 // Determine the brush color
 function choose_color() {
-    console.log('Color Mode = ' + color_mode);
-
     if (color_mode == 'picker') {
         color = color_picker.value;
     } else if (color_mode == 'swatch') {
         color = new_swatch.dataset.swatch;
     }
-
-    console.log('Brush Color = ' + color);
 }
 
 // FILL TOOL
@@ -60,7 +56,8 @@ $('svg').click(function(event) {
 const download_btn = document.querySelector('[data-command="download"]');
 
 download_btn.addEventListener('click', () => {
-    const dl_svg = document.querySelector(".main-area").innerHTML;
+    // const dl_svg = document.querySelector(".main-area").innerHTML;
+    const dl_svg = versions[4];
     const blob = new Blob([dl_svg.toString()]);
     const element = document.createElement("a");
     element.download = "My-Coloring-Book.svg";
@@ -88,7 +85,7 @@ function push_version() {
     }
     var v_svg = svg.cloneNode(true);
     versions.unshift(v_svg); // Adds current SVG to beginning of Versions
-    console.log(versions);
+    console.log(versions.length);
 }
 
 const undo_btn = document.querySelector('[data-command="undo"]')
