@@ -49,7 +49,7 @@ function choose_color() {
 // FILL TOOL
 // -------------------------------
 const main_area = document.querySelector(".main-area");
-var artwork = document.querySelector(".main-area svg");
+let artwork = document.querySelector(".main-area svg");
 
 main_area.addEventListener('click', (event) => {
     // Click listener is set to main area because the SVG gets removed and appended,
@@ -81,8 +81,8 @@ download_btn.addEventListener('click', () => {
 // UNDO FUNCTION
 //
 // Logic:
-// Clicking Edit >>> If Versions Array length is 5, delete last in Versions Array, then push the new edit to beginning
-// Clicking Undo >>> Delete current artwork on page, inject Versions[0] to main-area, delete Versions[0]
+// Clicking Edit >>> If Versions Array length is 30, delete last in Versions Array, then push the new edit to beginning. Counter-clockwise
+// Clicking Undo >>> Delete current artwork on page, inject Versions[0] to main-area, delete Versions[0].
 // -------------------------------
 
 let versions = [artwork.cloneNode(true)]; // Init the Versions Array, put default as first element in Versions
@@ -104,12 +104,21 @@ undo_btn.addEventListener('click', undo);
 var x = 0;
 
 function undo() {
+    artwork = document.querySelector(".main-area svg"); // Reset the artwork variable
     if (versions.length == 1) {
         alert('There is nothing to undo!');
     } else {
-        document.querySelector(".main-area svg").remove(); // Removes the artwork on page
+        artwork.remove(); // Removes the artwork on page
         versions.shift(); // Deletes first element in Versions
         x = x + 1;
         main_area.appendChild(versions[0]); // Insert last version into main-area area
     }
 }
+
+const form = document.createElement('form');
+const input = document.createElement('input');
+
+input.setAttribute('value', artwork);
+
+main_area.appendChild(form);
+form.appendChild(input);
