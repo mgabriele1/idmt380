@@ -122,8 +122,6 @@ footer {
 }
 
 .coloring-page {
-    height: 100vh;
-    width: 100vw;
     padding: 0;
     margin: 0;
     background-color: #202020;
@@ -294,9 +292,6 @@ input[type="color"] {
 @media screen and (min-width: 439px){
     .aside{
         padding: 1rem 4.5rem;
-    }
-    .coloring-page {
-    max-width: 550px;
     }
 }
 @media screen and (min-width: 474px){
