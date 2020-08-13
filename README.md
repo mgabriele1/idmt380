@@ -91,6 +91,6 @@ ALTER TABLE `artwork`
 
 ### [Optional] Enable Watch
 
-1. Simply  un-comment line 10 in gulpfile.js and run command `gulp` again to have your Command Line watch for file changes like saves
+1. Simply  un-comment all gulp.watch commands in the gulpfile.js and run command `gulp` again to have your Command Line watch for file changes like saves to CSS and JS
 
 	To stop the watch process, press Ctrl + C

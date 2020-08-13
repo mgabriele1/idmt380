@@ -7,6 +7,15 @@ gulp.task('minify-css', () => {
     .pipe(gulp.dest('dist/css'));
 });
 
-gulp.watch('css/*.css', gulp.series(['minify-css']));
+const minify = require('gulp-minify');
 
-gulp.task('default', gulp.parallel('minify-css'));
+gulp.task('minify-js', () => {
+    return gulp.src(['scripts/*.js'])
+    .pipe(minify())
+    .pipe(gulp.dest('dist/scripts'));
+});
+
+gulp.watch('css/*.css', gulp.series(['minify-css']));
+gulp.watch('scripts/*.js', gulp.series(['minify-js']));
+
+gulp.task('default', gulp.parallel('minify-css', 'minify-js'));
