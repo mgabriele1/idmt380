@@ -24,7 +24,7 @@
             integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
             crossorigin="anonymous">
         </script>
-        <script src="scripts/main.js" defer></script>
+        <script src="dist/scripts/main-min.js" defer></script>
 </head>
 <body class="coloring-page">
 <div id="logo"> <a href="index.php"><img src="graphics/logo.png"> </a></div>
