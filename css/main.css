@@ -8,7 +8,9 @@
 
 body {
     width: 100%;
+    min-height: 100%;
     background-image: linear-gradient(var(--pink), var(--yellow), var(--teal), var(--purple2), var(--teal), var(--yellow), var(--pink) );
+    background-attachment: fixed;
     padding: 2rem;
     margin: 1rem auto;
     max-width: 1000px;
@@ -124,7 +126,6 @@ footer {
 .coloring-page {
     padding: 0;
     margin: 0;
-    background-color: #202020;
 }
 
 main {
@@ -145,7 +146,6 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    height: 3rem;
     background-color: #202020;
     border-radius: 10px 10px 0 0;
 
@@ -156,7 +156,10 @@ main {
 
 .aside:last-child{
     border-radius: 0 0 10px 10px;
+}
 
+#top-aside{
+    padding: 1rem 0;
 }
 
 .main-area {
@@ -234,10 +237,6 @@ input[type="color"] {
     border: white solid .1rem;
 }
 
-.credit {
-    margin-right: .5rem;
-}
-
 .credit * {
     font-family: sans-serif;
 }
@@ -297,5 +296,20 @@ input[type="color"] {
 @media screen and (min-width: 474px){
     .aside{
         padding: 1rem 1rem;
+    }
+}
+@media screen and (max-width: 474px){
+    .credit p{
+        font-size: 1rem;
+        margin: 1rem 1rem 0;
+        text-align: center;
+    }
+    #top-aside{
+        padding: .5rem 0;
+    }
+}
+@media screen and (max-width: 550px){
+    #colorpage{
+        margin: 0 .5rem 4rem;
     }
 }
