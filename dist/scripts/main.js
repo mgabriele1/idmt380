@@ -115,10 +115,10 @@ function undo() {
     }
 }
 
-const form = document.createElement('form');
-const input = document.createElement('input');
+// const form = document.createElement('form');
+// const input = document.createElement('input');
 
-input.setAttribute('value', artwork);
+// input.setAttribute('value', artwork);
 
-main_area.appendChild(form);
-form.appendChild(input);
+// main_area.appendChild(form);
+// form.appendChild(input);
