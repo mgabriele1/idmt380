@@ -41,7 +41,6 @@
             </div>
         </div>
         <div class="main-area">
-            <img src="graphics/artwork/DIGM223_An_Christina.svg">
             <?php include_once 'graphics/artwork/'.$row['image']; ?>
         </div>
         <div class="aside">
