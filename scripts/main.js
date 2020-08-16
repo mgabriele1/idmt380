@@ -58,7 +58,7 @@ main_area.addEventListener('click', (event) => {
     choose_color();
     event.target.style.fill = color;
     push_version();
-    console.log('you clicked');
+    artwork.style.fill = 'black'; // Keeps canvas black
 });
 
 // -------------------------------
@@ -114,11 +114,3 @@ function undo() {
         main_area.appendChild(versions[0]); // Insert last version into main-area area
     }
 }
-
-// const form = document.createElement('form');
-// const input = document.createElement('input');
-
-// input.setAttribute('value', artwork);
-
-// main_area.appendChild(form);
-// form.appendChild(input);
