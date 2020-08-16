@@ -71,7 +71,7 @@ download_btn.addEventListener('click', () => {
     const dl_artwork = document.querySelector(".main-area").innerHTML;
     const blob = new Blob([dl_artwork.toString()]);
     const element = document.createElement("a");
-    element.download = "My-Coloring-Book.artwork";
+    element.download = "My-Coloring-Book.svg";
     element.href = window.URL.createObjectURL(blob);
     element.click();
     element.remove();
