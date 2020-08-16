@@ -64,14 +64,15 @@ h1 {
     border-radius: 10px;
     /* Below fixes img heights for short img */
     background-color: white;
-    height: 256px;
+    min-height: 100%;
 }
 
 .thumbnails{
     margin: .5rem;
     padding: .5rem;
 }
-.thumbnails:hover{
+
+.image-grid img:hover {
     box-shadow: 5px 5px 10px black;
 }
 
