@@ -2,7 +2,7 @@
 ### How to initialize the app - Node required!
 
 1. Using your Command Line, navigate to the directory of the app folder.
-2. Initialize your local NPM by running this code: `npm install`.
+2. Initialize your local NPM by running this code: `npm i -y`.
 3. Run the command `gulp` to begin using the required packages.
 
 ### How to setup the database
