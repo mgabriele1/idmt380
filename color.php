@@ -1,9 +1,10 @@
 <?php
     include_once 'includes/db.php';
 
+    $table = $_GET['table'];
     $id = $_GET['id'];
 
-    $sql = "SELECT * FROM artwork WHERE id={$id};";
+    $sql = "SELECT * FROM {$table} WHERE id={$id};";
 
     $result = mysqli_query($connection, $sql);
     $resultCheck = mysqli_num_rows($result);
@@ -33,6 +34,7 @@
             <div class="group commands">
                 <div class="item command" data-command="undo"><img class="svg" src="graphics/undo.svg" alt="undo"></div>
                 <div class="item command" data-command="download"><img class="svg" src="graphics/download.svg" alt="download"></div>
+                <div class="item command" data-command="upload"><img class="svg" src="graphics/download.svg" alt="download"></div>
             </div>
             <div class="group">
                 <div class="credit">
@@ -41,7 +43,8 @@
             </div>
         </div>
         <div class="main-area">
-            <?php include_once 'graphics/artwork/'.$row['image']; ?>
+            <?php   
+                    if ($table == 'artwork') {include_once 'graphics/artwork/'.$row['image'];} else {echo $row['image'];} ?>
         </div>
         <div class="aside">
             <div class="group swatches">
@@ -61,6 +64,25 @@
         </div>
         </div>
     </main>
+    <div class="modal upload-modal closed">
+        <div class="upload-screen">
+            <div class="upload-preview"></div>
+            <form id="upload-form" action="includes/upload_handler.php" method="POST">
+                <input type="text" name="image" id="artwork-html" hidden>
+                <input type="text" name="id" value="<?php echo $id ?>" hidden>
+                <div class="half">
+                    <label for="name">Artwork Name</label>
+                        <input required maxlength="15" type="text" name="artwork_name" placeholder="Ex. Alex's Alien">
+                        <button name="submit" type="submit">Submit</button>
+                </div>
+                <div class="half">
+                    <label for="name">Illustrator</label>
+                        <input required maxlength="15" type="text" name="artist" placeholder="Alex P.">
+                        <button type="reset">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
 

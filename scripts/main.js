@@ -1,3 +1,7 @@
+// -------------------------------
+// COLOR WHEEL
+// -------------------------------
+
 const color_picker = document.querySelector('input[type="color"]');
 const color_wheel = document.querySelector('.stack');
 
@@ -12,7 +16,10 @@ function reset_active_swatch() {
     }
 }
 
+// -------------------------------
 // SWATCHES
+// -------------------------------
+
 const swatches = document.querySelectorAll('.swatch'); // Create Swatches Array
 
 swatches.forEach(swatch => {
@@ -48,6 +55,7 @@ function choose_color() {
 // -------------------------------
 // FILL TOOL
 // -------------------------------
+
 const main_area = document.querySelector(".main-area");
 let artwork = document.querySelector(".main-area svg");
 
@@ -95,7 +103,6 @@ function push_version() {
     }
     var v_artwork = artwork.cloneNode(true);
     versions.unshift(v_artwork); // Adds current artwork to beginning of Versions
-    console.log(versions.length);
 }
 
 const undo_btn = document.querySelector('[data-command="undo"]')
@@ -112,5 +119,51 @@ function undo() {
         versions.shift(); // Deletes first element in Versions
         x = x + 1;
         main_area.appendChild(versions[0]); // Insert last version into main-area area
+    }
+}
+
+// -------------------------------
+// UPLOAD BUTTON
+// -------------------------------
+
+const upload_btn = document.querySelector('[data-command="upload"]');
+const upload_preview_container = document.querySelector('.upload-preview');
+const artwork_input = document.querySelector('input#artwork-html');
+
+
+upload_btn.addEventListener('click', () => {
+    var current_previous = document.querySelector('.upload-preview svg')
+    if (current_previous) {
+        current_previous.remove();
+    }
+    
+    artwork = document.querySelector(".main-area svg"); // Reset the artwork variable
+    var v_artwork = artwork.cloneNode(true);
+    upload_preview_container.appendChild(v_artwork);
+    
+    artwork_input.value = main_area.innerHTML;
+    // artwork_input.value = 'some svg stuff';
+    toggle_upload_screen();
+})
+
+var upload_modal = document.querySelector('.upload-modal');
+
+// -------------------------------
+// TOGGLING THE UPLOAD SCREEN
+// -------------------------------
+
+const upload_reset_btn = document.querySelector('button[type="reset"]');
+
+upload_reset_btn.addEventListener('click', () => {
+    toggle_upload_screen()
+})
+
+function toggle_upload_screen() {
+    if (document.querySelector('.upload-modal.opened')) {
+        upload_modal.classList.remove('opened');
+        upload_modal.classList.add('closed');
+    } else {
+        upload_modal.classList.remove('closed');
+        upload_modal.classList.add('opened');
     }
 }
