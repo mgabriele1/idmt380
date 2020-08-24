@@ -1,12 +1,20 @@
 <?php
     include_once 'db.php';
 
-    $artwork_name = mysqli_real_escape_string($connection, $_POST ['artwork_name']);
     $artist = mysqli_real_escape_string($connection, $_POST ['artist']);
     $image = mysqli_real_escape_string($connection, $_POST ['image']);
 
-    $query = "INSERT INTO community (artwork_name, artist, image)
-    VALUES ('$artwork_name', '$artist', '$image');";
+    $sql = "SELECT image FROM community WHERE image=$image;";
+    $result = mysqli_query($connection, $sql);
+    
+            if (strpos($image, 'rgb') !== false) { // Check if $image is colored
+                // Perform the insert
+                $query = "INSERT INTO community (artist, image)
+                VALUES ('$artist', '$image');";
+            } else {
+                // Throw error
+                die("This artwork is not even colored...");
+            }
 
     $result = mysqli_query($connection, $query);
 

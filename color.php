@@ -28,7 +28,7 @@
         <script src="dist/scripts/main-min.js" defer></script>
 </head>
 <body class="coloring-page">
-<div id="logo"> <a href="index.php"><img src="graphics/logo.png"> </a></div>
+<div id="logo"> <a href="index.php"><img id="logo" src="graphics/logo.png"> </a></div>
     <main id="colorpage">
         <div class="aside" id="top-aside">
             <div class="group commands">
@@ -66,19 +66,15 @@
     </main>
     <div class="modal upload-modal closed">
         <div class="upload-screen">
+            <p><strong>Upload your artwork to the web</strong></p>
             <div class="upload-preview"></div>
             <form id="upload-form" action="includes/upload_handler.php" method="POST">
                 <input type="text" name="image" id="artwork-html" hidden>
-                <input type="text" name="id" value="<?php echo $id ?>" hidden>
+                <label for="name">Your name</label>
+                <input required maxlength="15" type="text" name="artist" placeholder="Alex P.">
                 <div class="half">
-                    <label for="name">Artwork Name</label>
-                        <input required maxlength="15" type="text" name="artwork_name" placeholder="Ex. Alex's Alien">
-                        <button name="submit" type="submit">Submit</button>
-                </div>
-                <div class="half">
-                    <label for="name">Illustrator</label>
-                        <input required maxlength="15" type="text" name="artist" placeholder="Alex P.">
-                        <button type="reset">Cancel</button>
+                    <button name="submit" type="submit">Submit</button>
+                    <button type="reset">Cancel</button>
                 </div>
             </form>
         </div>

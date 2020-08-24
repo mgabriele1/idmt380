@@ -20,6 +20,32 @@ function reset_active_swatch() {
 // SWATCHES
 // -------------------------------
 
+const swatch_container = document.querySelector('.swatches');
+const top_aside = document.querySelector('#top-aside');
+
+window.onresize = responsivenessCheck;
+responsivenessCheck();
+
+function responsivenessCheck() {
+    if (swatch_container.offsetHeight > 50) {
+        swatch_container.style.justifyContent = 'center';
+    } else {
+        swatch_container.style.justifyContent = 'space-between';
+    }
+
+    if (top_aside.offsetHeight > 60) {
+        top_aside.style.justifyContent = 'center';
+    } else {
+        top_aside.style.justifyContent = 'space-between';
+    }
+}
+
+// @media screen and (max-width: 474px){
+//     #top-aside {
+//         justify-content: center;
+//     }
+// }
+
 const swatches = document.querySelectorAll('.swatch'); // Create Swatches Array
 
 swatches.forEach(swatch => {
