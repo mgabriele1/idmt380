@@ -32,7 +32,7 @@
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
 
-                        echo "<a href='color.php?table=community&id={$row['id']}' class='thumbnails'>";
+                        echo "<a href='color.php?table=community&id={$row['id']}' class='thumbnails' title='Painted by: {$row['artist']}'>";
                         echo $row['image'];
                         echo "</a>";
 
@@ -56,7 +56,7 @@
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
     
-                            echo "<a href='color.php?table=artwork&id={$row['id']}' class='thumbnails'>";
+                            echo "<a href='color.php?table=artwork&id={$row['id']}' class='thumbnails' title='Artwork by: {$row['artist']}'>";
                             echo "<img src='graphics/artwork/{$row['image']}' alt='{$row['artist']}'>";
                             echo "</a>";
     
