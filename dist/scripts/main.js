@@ -22,6 +22,7 @@ function reset_active_swatch() {
 
 const swatch_container = document.querySelector('.swatches');
 const top_aside = document.querySelector('#top-aside');
+const show_all = document.querySelector('#show-all');
 
 window.onresize = responsivenessCheck;
 responsivenessCheck();
@@ -39,12 +40,6 @@ function responsivenessCheck() {
         top_aside.style.justifyContent = 'space-between';
     }
 }
-
-// @media screen and (max-width: 474px){
-//     #top-aside {
-//         justify-content: center;
-//     }
-// }
 
 const swatches = document.querySelectorAll('.swatch'); // Create Swatches Array
 
