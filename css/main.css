@@ -113,6 +113,32 @@ footer, .back-to-top {
     margin: 2rem auto 0 auto;
 }
 
+.upload-success {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.upload-success h1 {
+    margin: 0;
+}
+
+.upload-success p {
+    margin: 1rem 0;
+}
+
+.upload-success button {
+    color: var(--red2);
+}
+
+.upload-success p {
+    color: black;
+}
+
 /* Home Hovers */
 
 .b2t, .thumbnails *, .item, .stack, button {
@@ -126,6 +152,10 @@ button:hover, .item:hover {
 
 .b2t:hover {
     transform: scale(1.1);
+}
+
+.upload-success button:hover {
+    color: #505050;
 }
 
 /* Home Media Queries */
@@ -159,7 +189,7 @@ main {
 }
 
 #colorpage {
-    max-width: 550px;
+    max-width: 500px;
     margin: 1rem auto;
     border: 8px solid white;
     border-radius: 10px;
@@ -337,7 +367,7 @@ input[type="color"] {
     margin: .25rem 0;
 }
 
-#upload-form input, #upload-form button {
+input, button {
     width: 100%;
     min-height: fit-content;
     border: none;
@@ -351,12 +381,12 @@ input[type="color"] {
     justify-content: space-between;
 }
 
-#upload-form input {
+input {
     background-color: #e8e8e8;
     color: black;
 }
 
-#upload-form button {
+button {
     color: white;
     width: 46%;
 }

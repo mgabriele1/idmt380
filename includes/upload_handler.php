@@ -19,7 +19,7 @@
     $result = mysqli_query($connection, $query);
 
     if ($result) {
-        header("Location: ../index.php");
+        header("Location: ../index.php?upload");
     } else {
         echo 'Failed to add artwork.';
     }

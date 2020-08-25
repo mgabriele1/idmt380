@@ -4,6 +4,8 @@
     $table = $_GET['table'];
     $id = $_GET['id'];
 
+    if ($table == 'artwork') {$credit_word = 'Doodle';} else {$credit_word = 'Painted';}
+
     $sql = "SELECT * FROM {$table} WHERE id={$id};";
 
     $result = mysqli_query($connection, $sql);
@@ -37,7 +39,7 @@
             </div>
             <div class="group">
                 <div class="credit">
-                    <p>Artwork by: <?php echo $row['artist'] ?></p>
+                    <p><?php echo $credit_word; ?> by: <?php echo $row['artist'] ?></p>
                 </div>
             </div>
         </div>
