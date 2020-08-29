@@ -33,9 +33,9 @@
     <main id="colorpage">
         <div class="aside" id="top-aside">
             <div class="group commands">
-                <div class="item command" data-command="undo"><img class="svg" src="graphics/undo.svg" alt="undo"></div>
-                <div class="item command" data-command="download"><img class="svg" src="graphics/download.svg" alt="download"></div>
-                <div class="item command" data-command="upload"><img class="svg" src="graphics/download.svg" alt="download"></div>
+                <div class="item command" title="Undo" data-command="undo"><img class="svg" src="graphics/undo.svg" alt="undo"></div>
+                <div class="item command" title="Download" data-command="download"><img class="svg" src="graphics/download.svg" alt="download"></div>
+                <div class="item command" title="Upload to 'User Colored'" data-command="upload"><img class="svg" src="graphics/download.svg" alt="download"></div>
             </div>
             <div class="group">
                 <div class="credit">

@@ -21,35 +21,31 @@
             <button id="close-modal">Close</button>
         </div>
     </div>
-    <h1>User Created</h1>
+    <!--tab switching-->
+    <div class="tabs">
+        <a href="index.php"><button>Coloring Pages</button></a>
+        <a href="index.php?tab=user"><button>User Colored</button></a>
+    </div>
     <div class="image-grid user-created">
         <?php
             include_once 'includes/db.php';
-            if (!isset($_GET['all-uc'])) {$sql_limit = 3;} else {$sql_limit = 100;}
-            $sql = "SELECT * FROM community ORDER BY timestamp DESC LIMIT {$sql_limit};";
-            $result = mysqli_query($connection, $sql);
+            if (isset($_GET['tab'])) {
+                $sql = "SELECT * FROM community ORDER BY timestamp DESC LIMIT 100;";
 
-            if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
+                $result = mysqli_query($connection, $sql);
 
-                        echo "<a href='color.php?table=community&id={$row['id']}' class='thumbnails' title='Painted by: {$row['artist']}'>";
-                        echo $row['image'];
-                        echo "</a>";
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
 
+                            echo "<a href='color.php?table=community&id={$row['id']}' class='thumbnails' title='Painted by: {$row['artist']}'>";
+                            echo "<img src='graphics/user/{$row['image']}' alt='{$row['artist']}'>";
+                            echo "</a>";
+
+                    }
+                } else {
+                    echo "No user created artwork to show!";
                 }
             } else {
-                echo "No user created artwork to show!";
-            }
-            if (!isset($_GET['all-uc'])) { ?>
-            <a href="index.php?all-uc" class="thumbnails">
-                <div id="show-all">View All User Created</div>
-            </a>
-            <?php } ?>
-    </div>
-    <?php if (!isset($_GET['all-uc'])) { ?>
-    <h1>Template Gallery</h1>
-    <div class="image-grid">
-        <?php
                 $sql = "SELECT * FROM artwork;";
                 $result = mysqli_query($connection, $sql);
     
@@ -64,7 +60,11 @@
                 } else {
                     echo "No artwork to show!";
                 }
-        ?>
+            }
+            ?>
+    </div>
+    <?php if (!isset($_GET['all-uc'])) { ?>
+    <div class="image-grid">
     </div>
     <?php } ?>
     <footer>

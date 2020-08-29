@@ -74,21 +74,9 @@ h1 {
     border-radius: 10px;
 }
 
-.image-grid.user-created svg, div#show-all {
+.image-grid.user-created svg {
     width: auto;
     height: auto;
-}
-
-div#show-all {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    text-align: center;
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
 }
 
 @keyframes gradient {
