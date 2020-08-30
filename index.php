@@ -5,8 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coloring Book</title>
+    <title>Doodle Coloring Book</title>
     <link rel="stylesheet" href="dist/css/main.css" type="text/css"/>
+    <link rel="icon" href="graphics/icon.ico" type='image/x-icon'/>
 </head>
 
 <!--BODY-->
@@ -59,7 +60,7 @@
     </div>
     <footer>
         <a class="back-to-top" href="#top">
-            <img class="b2t" src="graphics/b2t.svg" alt="back to top">
+            <img class="b2t" src="graphics/btt.svg" alt="back to top">
         </a>
     </footer>
 </body>
