@@ -4,14 +4,14 @@
     $artist = mysqli_real_escape_string($connection, $_POST ['artist']);
     $svg = mysqli_real_escape_string($connection, $_POST ['image']);
     $fileName = uniqid() . '.svg';
-    file_put_contents('../graphics/user/' . $fileName, stripslashes($svg));
+    file_put_contents('../graphics/'.$table.'/' . $fileName, stripslashes($svg));
     
-    $sql = 'SELECT image FROM community WHERE image=$fileName;';
+    $sql = "SELECT image FROM $table WHERE image=$fileName;";
     $result = mysqli_query($connection, $sql);
     
             if (strpos($svg, 'rgb') !== false) { // Check if $image is colored
                 // Perform the insert
-                $query = "INSERT INTO community (artist, image)
+                $query = "INSERT INTO $table (artist, image)
                 VALUES ('$artist', '$fileName');";
             } else {
                 // Throw error

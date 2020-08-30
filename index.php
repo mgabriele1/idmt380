@@ -30,22 +30,22 @@
         <?php
             include_once 'includes/db.php';
             if (isset($_GET['tab'])) {
+                $table = 'community';
                 include_once 'includes/record_handler.php';
-                $sql = "SELECT * FROM community ORDER BY timestamp DESC LIMIT 100;";
-                // $the_echo = include_once 'graphics/user/'.$row['image'];
-                $the_table = 'community';
+                // $the_echo = include_once 'graphics/.'$table'./'.$row['image'];
+                $sql = "SELECT * FROM $table ORDER BY timestamp DESC LIMIT 100;";
             } else {
-                $sql = "SELECT * FROM artwork;";
+                $table = 'artwork';
                 // $the_echo = "<img src='graphics/artwork/{$row['image']}' alt='{$row['artist']}'>";
-                $the_table = 'artwork';
+                $sql = "SELECT * FROM $table;";
             }
             $result = mysqli_query($connection, $sql);
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
 
-                        echo "<a href='color.php?table={$the_table}&id={$row['id']}' class='thumbnails' title='Artwork by: {$row['artist']}'>";
+                        echo "<a href='color.php?table={$table}&id={$row['id']}' class='thumbnails' title='Artwork by: {$row['artist']}'>";
                         if (isset($_GET['tab'])) {
-                            include_once 'graphics/user/'.$row['image'];
+                            include_once 'graphics/'.$table.'/'.$row['image'];
                         } else {
                             echo "<img src='graphics/artwork/{$row['image']}' alt='{$row['artist']}'>";
                         }

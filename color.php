@@ -39,13 +39,12 @@
             </div>
             <div class="group">
                 <div class="credit">
-                    <p><?php echo $credit_word; ?> by: <?php echo $row['artist'] ?></p>
+                    <p><?php echo $credit_word; ?> by: <?php echo $row['artist']; ?></p>
                 </div>
             </div>
         </div>
         <div class="main-area">
-            <?php   
-                    if ($table == 'artwork') {include_once 'graphics/artwork/'.$row['image'];} else {include_once 'graphics/user/'.$row['image'];} ?>
+            <?php include_once 'graphics/'.$table.'/'.$row['image']; ?>
         </div>
         <div class="aside">
             <div class="group swatches">
