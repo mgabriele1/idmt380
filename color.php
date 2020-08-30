@@ -45,7 +45,7 @@
         </div>
         <div class="main-area">
             <?php   
-                    if ($table == 'artwork') {include_once 'graphics/artwork/'.$row['image'];} else {echo $row['image'];} ?>
+                    if ($table == 'artwork') {include_once 'graphics/artwork/'.$row['image'];} else {include_once 'graphics/user/'.$row['image'];} ?>
         </div>
         <div class="aside">
             <div class="group swatches">

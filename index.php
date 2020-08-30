@@ -30,43 +30,33 @@
         <?php
             include_once 'includes/db.php';
             if (isset($_GET['tab'])) {
+                include_once 'includes/record_handler.php';
                 $sql = "SELECT * FROM community ORDER BY timestamp DESC LIMIT 100;";
-
-                $result = mysqli_query($connection, $sql);
-
-                if (mysqli_num_rows($result) > 0) {
-                    while ($row = mysqli_fetch_assoc($result)) {
-
-                            echo "<a href='color.php?table=community&id={$row['id']}' class='thumbnails' title='Painted by: {$row['artist']}'>";
-                            echo "<img src='graphics/user/{$row['image']}' alt='{$row['artist']}'>";
-                            echo "</a>";
-
-                    }
-                } else {
-                    echo "No user created artwork to show!";
-                }
+                // $the_echo = include_once 'graphics/user/'.$row['image'];
+                $the_table = 'community';
             } else {
                 $sql = "SELECT * FROM artwork;";
-                $result = mysqli_query($connection, $sql);
-    
-                if (mysqli_num_rows($result) > 0) {
-                    while ($row = mysqli_fetch_assoc($result)) {
-    
-                            echo "<a href='color.php?table=artwork&id={$row['id']}' class='thumbnails' title='Artwork by: {$row['artist']}'>";
+                // $the_echo = "<img src='graphics/artwork/{$row['image']}' alt='{$row['artist']}'>";
+                $the_table = 'artwork';
+            }
+            $result = mysqli_query($connection, $sql);
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+
+                        echo "<a href='color.php?table={$the_table}&id={$row['id']}' class='thumbnails' title='Artwork by: {$row['artist']}'>";
+                        if (isset($_GET['tab'])) {
+                            include_once 'graphics/user/'.$row['image'];
+                        } else {
                             echo "<img src='graphics/artwork/{$row['image']}' alt='{$row['artist']}'>";
-                            echo "</a>";
-    
-                    }
-                } else {
-                    echo "No artwork to show!";
+                        }
+                        echo "</a>";
+
                 }
+            } else {
+                echo "No artwork to show!";
             }
             ?>
     </div>
-    <?php if (!isset($_GET['all-uc'])) { ?>
-    <div class="image-grid">
-    </div>
-    <?php } ?>
     <footer>
         <a class="back-to-top" href="#top">
             <img class="b2t" src="graphics/b2t.svg" alt="back to top">

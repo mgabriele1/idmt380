@@ -163,7 +163,7 @@ upload_btn.addEventListener('click', () => {
     upload_preview_container.appendChild(v_artwork);
     
     artwork_input.value = main_area.innerHTML;
-    // artwork_input.value = 'some svg stuff';
+    console.log(artwork_input.value);
     toggle_upload_screen();
 })
 
