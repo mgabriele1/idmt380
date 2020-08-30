@@ -8,13 +8,17 @@
     <title>Doodle Coloring Book</title>
     <link rel="stylesheet" href="dist/css/main.css" type="text/css"/>
     <link rel="icon" href="graphics/icon.ico" type='image/x-icon'/>
-    <script> var current_page = 'index'; </script>
+    <link rel="stylesheet" href="https://use.typekit.net/ssy0mlu.css">
 </head>
 
 <!--BODY-->
 <body>
     <header id="top">
-        <div id="logo"><a href="index.php"><img id="logo" src="graphics/logo.png"></a></div>
+        <div class="logo">
+            <a href="index.php">
+                <img id="logo" src="graphics/logo.png">
+            </a>
+        </div>
     </header>
     <div class="modal" style="display: <?php if (!isset($_GET['upload'])) {echo 'none';} else {echo 'flex';} ?>">
         <div class="upload-success">

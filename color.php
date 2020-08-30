@@ -22,6 +22,7 @@
         <title>Doodle Coloring Book</title>
         <link rel="stylesheet" href="dist/css/main.css">
         <link rel="icon" href="graphics/icon.ico" type='image/x-icon'/>
+        <link rel="stylesheet" href="https://use.typekit.net/ssy0mlu.css">
         <script
             src="https://code.jquery.com/jquery-3.5.1.min.js"
             integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
@@ -30,37 +31,43 @@
         <script src="dist/scripts/main-min.js" defer></script>
 </head>
 <body class="coloring-page">
-<div id="logo"><a href="index.php"><img id="logo" src="graphics/logo.png"></a></div>
+<div class="logo">
+    <a href="index.php">
+        <img class="logocoloring" src="graphics/logo.png">
+    </a>
+</div>
     <main id="colorpage">
         <div class="aside" id="top-aside">
-            <div class="group commands">
+            <div class="commands">
+                <div class="canvas-buttons">
                 <div class="item command" title="Undo" data-command="undo"><img class="svg" src="graphics/undo.svg" alt="undo"></div>
                 <div class="item command" title="Download" data-command="download"><img class="svg" src="graphics/download.svg" alt="download"></div>
                 <div class="item command" title="Upload to 'User Colored'" data-command="upload"><img class="svg" src="graphics/download.svg" alt="download"></div>
             </div>
-            <div class="group">
-                <div class="credit">
-                    <p><?php echo $credit_word; ?> by: <?php echo $row['artist']; ?></p>
-                </div>
+            <div class="credit">
+                <p><?php echo $credit_word; ?> by: <?php echo $row['artist']; ?></p>
+            </div>
             </div>
         </div>
         <div class="main-area">
             <?php include_once 'graphics/'.$table.'/'.$row['image']; ?>
         </div>
         <div class="aside">
-            <div class="group swatches">
-                <div class="item stack"></div>
-                <input type="color" class="item" title="Color Picker">
+            <div class="swatches">
+                <div class="swatches-inner">
+                    <div class="item stack"></div>
+                    <input type="color" class="item" title="Color Picker">
 
-                <div class="item swatch active" data-swatch="#ba2fff"></div>
-                <div class="item swatch" data-swatch="#7d00f9"></div>
-                <div class="item swatch" data-swatch="#4252fe"></div>
-                <div class="item swatch" data-swatch="#00ffd0"></div>
-                <div class="item swatch" data-swatch="#90ff59"></div>
-                <div class="item swatch" data-swatch="#ffda44"></div>
-                <div class="item swatch" data-swatch="#ff8e31"></div>
-                <div class="item swatch" data-swatch="#ff6543"></div>
-                <div class="item swatch" data-swatch="#ff5d5d"></div>
+                    <div class="item swatch active" data-swatch="#ba2fff"></div>
+                    <div class="item swatch" data-swatch="#7d00f9"></div>
+                    <div class="item swatch" data-swatch="#4252fe"></div>
+                    <div class="item swatch" data-swatch="#00ffd0"></div>
+                    <div class="item swatch" data-swatch="#90ff59"></div>
+                    <div class="item swatch" data-swatch="#ffda44"></div>
+                    <div class="item swatch" data-swatch="#ff8e31"></div>
+                    <div class="item swatch" data-swatch="#ff6543"></div>
+                    <div class="item swatch" data-swatch="#ff5d5d"></div>
+                </div>
             </div>
         </div>
         </div>

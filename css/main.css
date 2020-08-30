@@ -3,7 +3,9 @@
 /* ----- INDEX ----- */
 
 * {
-    font-family: sans-serif;
+    font-family: marvin-round, sans-serif;
+    font-weight: 400;
+    font-style: normal;
     scroll-behavior: smooth;
 }
 
@@ -32,18 +34,26 @@ a:link, a:visited, a:hover, a:active  {
     --red2: rgb(197, 6, 6);
     --green2: rgb(53, 212, 159);
     --blue2: rgb(0, 131, 245);
+
+    --tab-active: black;
+    --tab-back: rgba(0, 0, 0, 0.452);
+    --tab-text: white;
+    --background: rgb(103, 175, 96);;
 }
 
 body {
-    background-image: linear-gradient(var(--pink), var(--yellow), var(--teal), var(--purple2), var(--teal), var(--yellow), var(--pink));
-    /* background-attachment: fixed; */
+    /* background-image: linear-gradient(var(--pink), var(--yellow), var(--teal), var(--purple2), var(--teal), var(--yellow), var(--pink)); */
+    background-color: var(--background);
 }
 
 #logo {
     width: 100%;
     max-width: 200px;
-    margin: 1rem auto;
+}
 
+.logocoloring {
+    width: 100%;
+    max-width: 100px;
 }
 
 h1 {
@@ -57,8 +67,6 @@ h1 {
     flex-wrap: wrap;
     width: 100%;
     max-width: 1200px;
-    margin: auto;
-    padding: 0 2rem;
 }
 
 .thumbnails {
@@ -67,12 +75,12 @@ h1 {
 }
 
 .thumbnails *:hover {
-    box-shadow: 5px 5px 10px black;
+    /* box-shadow: 3px 3px 7px rgb(103, 175, 96); */
 }
 
 .thumbnails * {
     box-shadow: 4px 4px 4px 3px #00000046;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .image-grid.user-created svg {
@@ -95,11 +103,12 @@ h1 {
 footer, .back-to-top {
     width: 100%;
     display: flex;
+    justify-content: center;
 }
 
 .b2t {
     width: 5rem;
-    margin: 2rem auto 0 auto;
+    padding-bottom: 1.5rem;
 }
 
 .upload-success {
@@ -152,19 +161,23 @@ button:hover, .item:hover {
     display: flex;
 }
 .tab {
-    color: black;
-    background-color: white;
+    color: var(--tab-text);
+    background-color:var(--tab-back);
     width: 50vw;
     text-align: center;
-    opacity: 50%;
-    padding: .5rem;
+    padding: .75rem;
+    font-size: .75rem;
+    letter-spacing: .08rem;
 }
 .activetab {
-    color: red;
+    background-color:var(--tab-active);
 }
 .image-grid {
-    background-color: white;
-    padding: 1.5rem 1rem;
+    background-color:var(--tab-active);
+    padding: 1rem .5rem;
+}
+footer {
+    background-color:var(--tab-active);
 }
 
 /* Home Media Queries */
@@ -199,17 +212,15 @@ main {
 
 #colorpage {
     max-width: 500px;
-    margin: 1rem auto;
+    padding: 0 1rem;
+    /* margin: 1rem auto;
     border: 8px solid white;
     border-radius: 10px;
     background-color: white;
-    box-shadow: 0 0 7px 5px #00000046;
+    box-shadow: 0 0 7px 5px #00000046; */
 }
 
 .aside {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     background-color: #202020;
     border-radius: 10px 10px 0 0;
     display: flex;
@@ -239,29 +250,37 @@ main {
     height: auto;
 }
 
-.group {
+.commands {
     width: fit-content;
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
     align-items: center;
     max-width: 50rem;
+}
+.canvas-buttons {
+    display: flex;
 }
 
 .item {
     width: 2rem;
     height: 2rem;
     margin: .25rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .swatches {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    display: inline-block;
     width: 100%;
-    margin: auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+}
+.swatches-inner {
+    display: inline-block;
+}
+
+.swatches-inner div {
+    display:inline-block;
 }
 
 .swatch {
