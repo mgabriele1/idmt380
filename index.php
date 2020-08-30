@@ -25,8 +25,26 @@
     </div>
     <!--tab switching-->
     <div class="tabs">
-        <a href="index.php"><div class="tab" id="tab1">Coloring Pages</div></a>
-        <a href="index.php?tab=user"><div class="tab" id="tab2">User Colored</div></a>
+        <a href="index.php"><div class="tab
+        
+        <?php 
+         if (isset($_GET['tab'])) {
+
+         } else {
+             echo "activetab";
+         }
+        ?>
+        
+        " id="tab1">Coloring Pages</div></a>
+        <a href="index.php?tab=user"><div class="tab
+        
+        <?php 
+         if (isset($_GET['tab'])) {
+            echo "activetab";
+         }
+        ?>
+
+        " id="tab2">User Colored</div></a>
     </div>
     <div class="image-grid user-created">
         <?php
