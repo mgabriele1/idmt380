@@ -36,14 +36,14 @@ a:link, a:visited, a:hover, a:active  {
 
 body {
     background-image: linear-gradient(var(--pink), var(--yellow), var(--teal), var(--purple2), var(--teal), var(--yellow), var(--pink));
-    padding: 2rem;
     /* background-attachment: fixed; */
 }
 
 #logo {
     width: 100%;
-    max-width: 225px;
-    padding: .5rem;
+    max-width: 200px;
+    margin: 1rem auto;
+
 }
 
 h1 {
@@ -58,6 +58,7 @@ h1 {
     width: 100%;
     max-width: 1200px;
     margin: auto;
+    padding: 0 2rem;
 }
 
 .thumbnails {
@@ -144,6 +145,26 @@ button:hover, .item:hover {
 
 .upload-success button:hover {
     color: #505050;
+}
+
+/* Home tabs */
+.tabs {
+    display: flex;
+}
+.tab {
+    color: black;
+    background-color: white;
+    width: 50vw;
+    text-align: center;
+    opacity: 50%;
+    padding: .5rem;
+}
+.activetab {
+    color: red;
+}
+.image-grid {
+    background-color: white;
+    padding: 1.5rem 1rem;
 }
 
 /* Home Media Queries */

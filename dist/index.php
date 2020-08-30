@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><!--HEAD--><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Coloring Book</title><link rel="stylesheet" href="dist/css/main.css" type="text/css"></head><!--BODY--><body><header id="top"><div id="logo"><a href="index.php"><img id="logo" src="graphics/logo.png"></a></div></header><div class="modal" style="display: <?php if (!isset($_GET['upload'])) {echo 'none';} else {echo 'flex';} ?>"><div class="upload-success"><h1>Upload successful!</h1><p>Your artwork is now featured at the top.</p><button id="close-modal">Close</button></div></div><!--tab switching--><div class="tabs"><a href="index.php"><button>Coloring Pages</button></a> <a href="index.php?tab=user"><button>User Colored</button></a></div><div class="image-grid user-created"> <?php
+<!DOCTYPE html><html lang="en"><!--HEAD--><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Doodle Coloring Book</title><link rel="stylesheet" href="dist/css/main.css" type="text/css"><link rel="icon" href="graphics/icon.ico" type="image/x-icon"><script>var current_page = 'index';</script></head><!--BODY--><body><header id="top"><div id="logo"><a href="index.php"><img id="logo" src="graphics/logo.png"></a></div></header><div class="modal" style="display: <?php if (!isset($_GET['upload'])) {echo 'none';} else {echo 'flex';} ?>"><div class="upload-success"><h1>Upload successful!</h1><p>Your artwork is now featured at the top.</p><button id="close-modal">Close</button></div></div><!--tab switching--><div class="tabs"><a href="index.php"><div class="tab" id="tab1">Coloring Pages</div></a><a href="index.php?tab=user"><div class="tab" id="tab2">User Colored</div></a></div><div class="image-grid user-created"> <?php
             include_once 'includes/db.php';
             if (isset($_GET['tab'])) {
                 $table = 'community';
@@ -26,7 +26,7 @@
             } else {
                 echo "No artwork to show!";
             }
-            ?> </div><footer><a class="back-to-top" href="#top"><img class="b2t" src="graphics/b2t.svg" alt="back to top"></a></footer></body><script defer="defer">window.onresize = () => {
+            ?> </div><footer><a class="back-to-top" href="#top"><img class="b2t" src="graphics/btt.svg" alt="back to top"></a></footer></body><script defer="defer">window.onresize = () => {
             const show_all = document.querySelector('div#show-all');
             console.log(document.querySelector('.thumbnails svg:first-of-type').clientHeight);
             show_all.style.height = document.querySelector('.thumbnails svg:first-of-type').clientHeight + 'px';

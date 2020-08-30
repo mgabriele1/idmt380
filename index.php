@@ -8,6 +8,7 @@
     <title>Doodle Coloring Book</title>
     <link rel="stylesheet" href="dist/css/main.css" type="text/css"/>
     <link rel="icon" href="graphics/icon.ico" type='image/x-icon'/>
+    <script> var current_page = 'index'; </script>
 </head>
 
 <!--BODY-->
@@ -24,8 +25,8 @@
     </div>
     <!--tab switching-->
     <div class="tabs">
-        <a href="index.php"><button>Coloring Pages</button></a>
-        <a href="index.php?tab=user"><button>User Colored</button></a>
+        <a href="index.php"><div class="tab" id="tab1">Coloring Pages</div></a>
+        <a href="index.php?tab=user"><div class="tab" id="tab2">User Colored</div></a>
     </div>
     <div class="image-grid user-created">
         <?php

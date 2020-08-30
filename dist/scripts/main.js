@@ -188,3 +188,4 @@ function toggle_upload_screen() {
         upload_modal.classList.add('opened');
     }
 }
+
