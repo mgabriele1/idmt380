@@ -5,7 +5,7 @@
 .DS_Store?
 ehthumbs.db
 Thumbs.db
-Community/*
+graphics/community/*
 
 # Icon must end with two \r
 Icon
