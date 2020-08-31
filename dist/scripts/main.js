@@ -25,7 +25,16 @@ function hideColorPicker() {
     color_picker.classList.toggle('hide');
         picker_reflect.classList.toggle('hide');
         setTimeout(function() {
+            color_picker.classList.toggle('move-up');
             picker_reflect.classList.toggle('squish');
+        }, 250);
+}
+
+function hideJustPicker() {
+    color_picker.classList.toggle('hide');
+        // picker_reflect.classList.toggle('hide');
+        setTimeout(function() {
+            // picker_reflect.classList.toggle('squish');
             color_picker.classList.toggle('move-up');
         }, 250);
 }
@@ -33,12 +42,14 @@ function hideColorPicker() {
 picker_close.addEventListener('click', toggleColorPicker);
 
 color_wheel.addEventListener('click', () => {
+    reset_active_swatch();
     toggleColorPicker();
     color_mode = 'picker';
+    picker_reflect.classList.add('active');
 });
 
 function reset_active_swatch() {
-    var active_swatch = document.querySelector('.swatch.active'); // Reset the active swatch
+    var active_swatch = document.querySelector('[data-swatch].active'); // Reset the active swatch
     if (active_swatch) {
         active_swatch.classList.remove('active'); // Remove the active class from the active swatch
     }
@@ -94,6 +105,7 @@ swatches.forEach(swatch => {
         swatch.classList.add('active'); // Set the clicked swatch to the active swatch
         color_mode = 'swatch'; // Set the color mode to Swatch
         new_swatch = swatch; // Set the new swatch
+        hideColorPicker();
     })
 });
 
@@ -149,7 +161,7 @@ main_area.addEventListener('click', (event) => {
     // that would break the listener if it were set to the SVG,
     // var 'event' is a sub variable that gets redefined each click
     if (document.querySelector('.move-up')) {
-        hideColorPicker();
+        hideJustPicker();
     } else {
         choose_color();
         push_version();

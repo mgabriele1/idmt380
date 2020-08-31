@@ -359,11 +359,11 @@ svg {
     border-width: .3rem !important;
 }
 
-.active {
+/* .active {
     background-color: #585858;
-}
+} */
 
-.swatch.active {
+.active {
     border: white solid .1rem;
 }
 
