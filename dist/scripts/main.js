@@ -118,28 +118,6 @@ function choose_color() {
 }
 
 // -------------------------------
-// FILL TOOL
-// -------------------------------
-
-const main_area = document.querySelector(".main-area");
-let artwork = document.querySelector(".main-area svg");
-
-main_area.addEventListener('click', (event) => {
-    // Click listener is set to main area because the SVG gets removed and appended,
-    // that would break the listener if it were set to the SVG,
-    // var 'event' is a sub variable that gets redefined each click
-    if (document.querySelector('.move-up')) {
-        hideColorPicker();
-    } else {
-        choose_color();
-        event.target.style.fill = color;
-        push_version();
-        artwork.style.fill = 'black'; // Keeps canvas black
-        color_picker.style.display = 'none !important';
-    }
-});
-
-// -------------------------------
 // DOWNLOAD THE PAINTING
 // -------------------------------
 
@@ -156,6 +134,32 @@ download_btn.addEventListener('click', () => {
 });
 
 // -------------------------------
+// FILL TOOL
+// -------------------------------
+
+function resetArtworkVar() {
+    artwork = document.querySelector(".main-area svg"); // Re-vars the svg as artwork
+}
+
+const main_area = document.querySelector(".main-area");
+
+main_area.addEventListener('click', (event) => {
+    // Click listener is set to main area because the SVG gets removed and appended,
+    // that would break the listener if it were set to the SVG,
+    // var 'event' is a sub variable that gets redefined each click
+    if (document.querySelector('.move-up')) {
+        hideColorPicker();
+    } else {
+        choose_color();
+        push_version();
+        resetArtworkVar();
+        event.target.style.fill = color;
+        artwork.style.fill = 'black'; // Keeps canvas black
+        color_picker.style.display = 'none !important';
+    }
+});
+
+// -------------------------------
 // UNDO FUNCTION
 //
 // Logic:
@@ -165,12 +169,13 @@ download_btn.addEventListener('click', () => {
 
 let versions = [artwork.cloneNode(true)]; // Init the Versions Array, put default as first element in Versions
 
-// Edit Push to Versions
+// Edit
 
 function push_version() {
-    if (versions.length == 30) { // 30 = Max undo
-        versions.pop(); // Removes last element in Versions
-    }
+    resetArtworkVar();
+        if (versions.length == 30) { // 30 = Max undo
+            versions.pop(); // Removes last element in Versions
+        }
     var v_artwork = artwork.cloneNode(true);
     versions.unshift(v_artwork); // Adds current artwork to beginning of Versions
 }
@@ -178,17 +183,14 @@ function push_version() {
 const undo_btn = document.querySelector('[data-command="undo"]')
 undo_btn.addEventListener('click', undo);
 
-var x = 0;
-
 function undo() {
-    artwork = document.querySelector(".main-area svg"); // Reset the artwork variable
-    if (versions.length == 1) {
+    resetArtworkVar();
+    if (versions.length == 0) {
         alert('There is nothing to undo!');
     } else {
         artwork.remove(); // Removes the artwork on page
-        versions.shift(); // Deletes first element in Versions
-        x = x + 1;
         main_area.appendChild(versions[0]); // Insert last version into main-area area
+        versions.shift(); // Deletes first element in Versions
     }
 }
 
@@ -207,7 +209,7 @@ upload_btn.addEventListener('click', () => {
         current_previous.remove();
     }
     
-    artwork = document.querySelector(".main-area svg"); // Reset the artwork variable
+    resetArtworkVar();
     var v_artwork = artwork.cloneNode(true);
     upload_preview_container.appendChild(v_artwork);
     
