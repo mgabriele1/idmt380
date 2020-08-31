@@ -320,9 +320,10 @@ main {
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
-    display: inline-block;
+    display: flex;
     width: 100%;
     padding: .25rem;
+    justify-content: center;
 }
 .swatches-inner {
     display: inline-block;
