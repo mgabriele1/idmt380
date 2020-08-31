@@ -1,14 +1,14 @@
-<!DOCTYPE html><html lang="en"><!--HEAD--><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Doodle Coloring Book</title><link rel="stylesheet" href="dist/css/main.css" type="text/css"><link rel="icon" href="graphics/icon.ico" type="image/x-icon"><link rel="stylesheet" href="https://use.typekit.net/ssy0mlu.css"></head><!--BODY--><body><header id="top"><div class="logo"><a href="index.php"><img id="logo" src="graphics/logo.png"></a></div></header><div class="modal" style="display: <?php if (!isset($_GET['upload'])) {echo 'none';} else {echo 'flex';} ?>"><div class="upload-success"><h1>Upload successful!</h1><p>Your artwork is now featured at the top.</p><button id="close-modal">Close</button></div></div><!--tab switching--><div class="tabs"><a href="index.php"><div class="tab <?php 
+<!DOCTYPE html><html lang="en"><!--HEAD--><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Doodle Coloring Book</title><link rel="stylesheet" href="dist/css/main.css" type="text/css"><link rel="icon" href="graphics/icon.ico" type="image/x-icon"><link rel="stylesheet" href="https://use.typekit.net/ssy0mlu.css"></head><!--BODY--><body><header id="top"><div class="logo"><a href="index.php"><img class="logoindex" src="graphics/logo.png"></a></div></header><div class="modal" style="display: <?php if (!isset($_GET['upload'])) {echo 'none';} else {echo 'flex';} ?>"><div class="upload-success"><h1>Upload successful!</h1><p>Your artwork is now featured at the top.</p><button id="close-modal">Close</button></div></div><!--tab switching--><div class="tabs"><a href="index.php"><div class="tab <?php 
          if (isset($_GET['tab'])) {
 
          } else {
              echo "activetab";
          }
-        ?> " id="tab1">Coloring Pages</div></a><a href="index.php?tab=user"><div class="tab <?php 
+        ?> " id="tab1"><p>Coloring Pages</p></div></a><a href="index.php?tab=user"><div class="tab <?php 
          if (isset($_GET['tab'])) {
             echo "activetab";
          }
-        ?> " id="tab2">User Colored</div></a></div><div class="image-grid user-created"> <?php
+        ?> " id="tab2"><p>User Colored</p></div></a></div><div class="image-grid user-created"> <?php
             include_once 'includes/db.php';
             if (isset($_GET['tab'])) {
                 $table = 'community';

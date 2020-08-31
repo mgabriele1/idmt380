@@ -32,18 +32,18 @@
         <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
 </head>
 <body class="coloring-page">
-    <div class="logo">
-            <a href="index.php">
-                <img class="logocoloring" src="graphics/logo.png">
-            </a>
-        </div>
+    <div id="logo">
+        <a href="index.php">
+            <img class="logocoloring" src="graphics/logo.png">
+        </a>
+    </div>
     <main id="colorpage">
         <div class="aside" id="top-aside">
             <div class="commands">
             <div class="canvas-buttons">
-                <div class="item command" title="Undo" data-command="undo"><img class="svg" src="graphics/undo.svg" alt="undo"></div>
-                <div class="item command" title="Download" data-command="download"><img class="svg" src="graphics/download.svg" alt="download"></div>
-                <div class="item command" title="Upload to 'User Colored'" data-command="upload"><img class="svg" src="graphics/download.svg" alt="download"></div>
+                <div class="command" title="Undo" data-command="undo"><img class="svg" src="graphics/undo.svg" alt="undo"></div>
+                <div class="command" title="Download" data-command="download"><img class="svg" src="graphics/download.svg" alt="download"></div>
+                <div class="command" title="Upload to 'User Colored'" data-command="upload"><img class="svg" src="graphics/upload.svg" alt="download"></div>
             </div>
             <div class="credit">
                 <p>Artist: <?php echo $row['artist']; ?></p>
@@ -85,7 +85,7 @@
             <form id="upload-form" action="includes/upload_handler.php" method="POST">
                 <input type="text" name="image" id="artwork-html" hidden>
                 <label for="name">Your name</label>
-                <input required maxlength="15" type="text" name="artist" placeholder="Alex P.">
+                <input required maxlength="15" type="text" name="artist" placeholder="Enter Your Name">
                 <div class="half">
                     <button name="submit" type="submit">Submit</button>
                     <button type="reset">Cancel</button>
