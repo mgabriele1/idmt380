@@ -82,7 +82,7 @@ h1 {
 }
 
 .thumbnails *:hover {
-    /* box-shadow: 3px 3px 7px rgb(103, 175, 96); */
+    transform: scale(1.05);
 }
 
 .thumbnails * {
