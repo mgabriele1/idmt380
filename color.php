@@ -1,6 +1,4 @@
 <?php
-    include_once 'includes/db.php';
-
     $current_page = 'color';
     include_once 'includes/head.php';
 
@@ -71,10 +69,4 @@
             </form>
         </div>
     </div>
-</body>
-</html>
-
-<?php
-        }
-    }
-?>
+<?php }} include_once 'include/footer.php'; ?>

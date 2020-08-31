@@ -1,5 +1,4 @@
 <?php
-    include_once 'includes/db.php';
     $current_page = 'index';
     include_once 'includes/head.php';
 ?> <div class="modal" style="display: <?php if (!isset($_GET['upload'])) {echo 'none';} else {echo 'flex';} ?>"><div class="upload-success"><h1>Upload successful!</h1><p>Your artwork is now featured at the top.</p><button id="close-modal">Close</button></div></div><!--tab switching--><div class="tabs"><a href="index.php"><div class="tab <?php 

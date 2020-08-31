@@ -1,5 +1,4 @@
 <?php
-    include_once 'includes/db.php';
     $current_page = 'index';
     include_once 'includes/head.php';
 ?>
@@ -66,6 +65,4 @@
             <img class="b2t" src="graphics/btt.svg" alt="back to top">
         </a>
     </div>
-</body>
-    <?php include_once 'include/footer.php'; ?>
-</html>
+<?php include_once 'include/footer.php'; ?>
