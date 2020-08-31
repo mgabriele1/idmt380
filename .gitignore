@@ -5,6 +5,8 @@
 .DS_Store?
 ehthumbs.db
 Thumbs.db
+graphics/community/*
+!graphics/community/5f4c42924eb1b.svg
 
 # Icon must end with two \r
 Icon

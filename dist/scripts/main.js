@@ -1,20 +1,80 @@
 // -------------------------------
-// COLOR WHEEL
+// COLOR WHEEL & PICKER
 // -------------------------------
 
-const color_picker = document.querySelector('input[type="color"]');
+const color_picker = document.querySelector('.colorPicker');
 const color_wheel = document.querySelector('.stack');
+const picker_close = document.querySelector('.picker-close');
+const picker_reflect = document.querySelector('.picker-reflect');
+
+function togglePicker() {
+    if (color_mode == 'picker') {
+        if (!document.querySelector('.move-up')) {
+            showAllPicker();
+        } else {
+            hideJustPicker()
+        }
+    } else if (color_mode == 'swatch') {
+        hideColorPicker();
+    }
+}
+
+function showAllPicker() {
+    color_picker.classList.remove('hide');
+    picker_reflect.classList.remove('hide');
+    setTimeout(function() {
+        color_picker.classList.add('move-up');
+        picker_reflect.classList.remove('squish');
+    }, 250);
+}
+
+function hideColorPicker() {
+    color_picker.classList.remove('move-up');
+    picker_reflect.classList.remove('squish');
+    setTimeout(function() {
+        color_picker.classList.add('hide');
+        picker_reflect.classList.add('hide');
+    }, 250);
+}
+hideColorPicker();
+
+function hideJustPicker() {
+    color_picker.classList.remove('move-up');
+    setTimeout(function() {
+        color_picker.classList.add('hide');
+        }, 250);
+}
+
+picker_close.addEventListener('click', togglePicker);
 
 color_wheel.addEventListener('click', () => {
-    color_picker.click(); // The color input is hidden, so if you click the picker, redirect the click to the input
+    reset_active_swatch();
+    color_mode = 'picker';
+    togglePicker();
+    picker_reflect.classList.add('active');
 });
 
 function reset_active_swatch() {
-    var active_swatch = document.querySelector('.swatch.active'); // Reset the active swatch
+    var active_swatch = document.querySelector('[data-swatch].active'); // Reset the active swatch
     if (active_swatch) {
         active_swatch.classList.remove('active'); // Remove the active class from the active swatch
     }
 }
+
+var colorPicker = new iro.ColorPicker(".colorPicker", {
+    // https://iro.js.org/guide.html#getting-started
+    // Color option guide: https://iro.js.org/guide.html#color-picker-options
+    width: 280,
+    color: "rgb(255, 0, 0)",
+    borderWidth: 1,
+    borderColor: "#fff",
+});
+
+colorPicker.on(["color:init", "color:change"], function(color){
+    // https://iro.js.org/guide.html#color-picker-events
+    var hex = colorPicker.color.hexString;
+    picker_reflect.style.backgroundColor = hex;
+});
 
 // -------------------------------
 // SWATCHES
@@ -28,12 +88,6 @@ window.onresize = responsivenessCheck;
 responsivenessCheck();
 
 function responsivenessCheck() {
-    if (swatch_container.offsetHeight > 50) {
-        swatch_container.style.justifyContent = 'center';
-    } else {
-        swatch_container.style.justifyContent = 'space-between';
-    }
-
     if (top_aside.offsetHeight > 60) {
         top_aside.style.justifyContent = 'center';
     } else {
@@ -41,7 +95,7 @@ function responsivenessCheck() {
     }
 }
 
-const swatches = document.querySelectorAll('.swatch'); // Create Swatches Array
+const swatches = document.querySelectorAll('.swatch[data-swatch]'); // Create Swatches Array
 
 swatches.forEach(swatch => {
     swatch.style.backgroundColor = swatch.dataset.swatch; // Set bck color to data HTML data-swatch
@@ -51,6 +105,7 @@ swatches.forEach(swatch => {
         swatch.classList.add('active'); // Set the clicked swatch to the active swatch
         color_mode = 'swatch'; // Set the color mode to Swatch
         new_swatch = swatch; // Set the new swatch
+        togglePicker();
     })
 });
 
@@ -61,34 +116,18 @@ color_picker.addEventListener('click', () => {
 
 // Init color mode, set picker value to value of first swatch
 var color_mode = 'picker';
-color_picker.setAttribute('value', swatches[0].dataset.swatch)
+color_picker.value = swatches[0].dataset.swatch;
 choose_color(); // Init the color_mode
 
 // Determine the brush color
 function choose_color() {
     if (color_mode == 'picker') {
-        color = color_picker.value;
+        // color = color_picker.value;
+        color = colorPicker.color.hexString
     } else if (color_mode == 'swatch') {
         color = new_swatch.dataset.swatch;
     }
 }
-
-// -------------------------------
-// FILL TOOL
-// -------------------------------
-
-const main_area = document.querySelector(".main-area");
-let artwork = document.querySelector(".main-area svg");
-
-main_area.addEventListener('click', (event) => {
-    // Click listener is set to main area because the SVG gets removed and appended,
-    // that would break the listener if it were set to the SVG,
-    // var 'event' is a sub variable that gets redefined each click
-    choose_color();
-    event.target.style.fill = color;
-    push_version();
-    artwork.style.fill = 'black'; // Keeps canvas black
-});
 
 // -------------------------------
 // DOWNLOAD THE PAINTING
@@ -107,6 +146,33 @@ download_btn.addEventListener('click', () => {
 });
 
 // -------------------------------
+// FILL TOOL
+// -------------------------------
+
+function resetArtworkVar() {
+    artwork = document.querySelector(".main-area svg"); // Re-vars the svg as artwork
+}
+resetArtworkVar();
+
+const main_area = document.querySelector(".main-area");
+
+main_area.addEventListener('click', (event) => {
+    // Click listener is set to main area because the SVG gets removed and appended,
+    // that would break the listener if it were set to the SVG,
+    // var 'event' is a sub variable that gets redefined each click
+    if (document.querySelector('.move-up')) {
+        togglePicker();
+    } else {
+        choose_color();
+        push_version();
+        resetArtworkVar();
+        event.target.style.fill = color;
+        artwork.style.fill = 'black'; // Keeps canvas black
+        color_picker.style.display = 'none !important';
+    }
+});
+
+// -------------------------------
 // UNDO FUNCTION
 //
 // Logic:
@@ -116,12 +182,13 @@ download_btn.addEventListener('click', () => {
 
 let versions = [artwork.cloneNode(true)]; // Init the Versions Array, put default as first element in Versions
 
-// Edit Push to Versions
+// Edit
 
 function push_version() {
-    if (versions.length == 30) { // 30 = Max undo
-        versions.pop(); // Removes last element in Versions
-    }
+    resetArtworkVar();
+        if (versions.length == 30) { // 30 = Max undo
+            versions.pop(); // Removes last element in Versions
+        }
     var v_artwork = artwork.cloneNode(true);
     versions.unshift(v_artwork); // Adds current artwork to beginning of Versions
 }
@@ -129,17 +196,14 @@ function push_version() {
 const undo_btn = document.querySelector('[data-command="undo"]')
 undo_btn.addEventListener('click', undo);
 
-var x = 0;
-
 function undo() {
-    artwork = document.querySelector(".main-area svg"); // Reset the artwork variable
-    if (versions.length == 1) {
+    resetArtworkVar();
+    if (versions.length == 0) {
         alert('There is nothing to undo!');
     } else {
         artwork.remove(); // Removes the artwork on page
-        versions.shift(); // Deletes first element in Versions
-        x = x + 1;
         main_area.appendChild(versions[0]); // Insert last version into main-area area
+        versions.shift(); // Deletes first element in Versions
     }
 }
 
@@ -158,12 +222,11 @@ upload_btn.addEventListener('click', () => {
         current_previous.remove();
     }
     
-    artwork = document.querySelector(".main-area svg"); // Reset the artwork variable
+    resetArtworkVar();
     var v_artwork = artwork.cloneNode(true);
     upload_preview_container.appendChild(v_artwork);
     
     artwork_input.value = main_area.innerHTML;
-    // artwork_input.value = 'some svg stuff';
     toggle_upload_screen();
 })
 
@@ -187,4 +250,20 @@ function toggle_upload_screen() {
         upload_modal.classList.remove('closed');
         upload_modal.classList.add('opened');
     }
+}
+
+// -------------------------------
+// COLOR SWATCH SCROLL/ CENTER
+// -------------------------------
+
+var outerSwatch = document.getElementById("swatch-out");
+var outerWidth = outerSwatch.clientWidth;
+var innerWidth = document.getElementById("swatch-in").clientWidth;
+
+if (outerWidth > innerWidth) {
+    outerSwatch.classList.remove("swatches");
+    outerSwatch.classList.add("swatches-wide");
+} else {
+    outerSwatch.classList.add("swatches");
+    outerSwatch.classList.remove("swatches-wide");
 }
