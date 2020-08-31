@@ -2,11 +2,13 @@
 // COLOR WHEEL
 // -------------------------------
 
-const color_picker = document.querySelector('input[type="color"]');
+const color_picker = document.querySelector('.colorPicker');
 const color_wheel = document.querySelector('.stack');
+color_wheel.classList.add('swatch');
 
 color_wheel.addEventListener('click', () => {
-    color_picker.click(); // The color input is hidden, so if you click the picker, redirect the click to the input
+    color_picker.hidden; // The color input is hidden, so if you click the picker, redirect the click to the input
+    color_mode = 'picker';
 });
 
 function reset_active_swatch() {
@@ -15,6 +17,21 @@ function reset_active_swatch() {
         active_swatch.classList.remove('active'); // Remove the active class from the active swatch
     }
 }
+
+var colorPicker = new iro.ColorPicker(".colorPicker", {
+    // https://iro.js.org/guide.html#getting-started
+    // Color option guide: https://iro.js.org/guide.html#color-picker-options
+    width: 280,
+    color: "rgb(255, 0, 0)",
+    borderWidth: 1,
+    borderColor: "#fff",
+});
+
+colorPicker.on(["color:init", "color:change"], function(color){
+    // https://iro.js.org/guide.html#color-picker-events
+    var hex = colorPicker.color.hexString;
+    color_wheel.style.borderColor = hex;
+});
 
 // -------------------------------
 // SWATCHES
@@ -41,7 +58,7 @@ function responsivenessCheck() {
     }
 }
 
-const swatches = document.querySelectorAll('.swatch'); // Create Swatches Array
+const swatches = document.querySelectorAll('.swatch[data-swatch]'); // Create Swatches Array
 
 swatches.forEach(swatch => {
     swatch.style.backgroundColor = swatch.dataset.swatch; // Set bck color to data HTML data-swatch
@@ -56,21 +73,24 @@ swatches.forEach(swatch => {
 
 color_picker.addEventListener('click', () => {
     color_mode = 'picker'; // Set the color mode to Picker
+
     reset_active_swatch();
 });
 
 // Init color mode, set picker value to value of first swatch
 var color_mode = 'picker';
-color_picker.setAttribute('value', swatches[0].dataset.swatch)
+color_picker.value = swatches[0].dataset.swatch;
 choose_color(); // Init the color_mode
 
 // Determine the brush color
 function choose_color() {
     if (color_mode == 'picker') {
-        color = color_picker.value;
+        // color = color_picker.value;
+        color = colorPicker.color.hexString
     } else if (color_mode == 'swatch') {
         color = new_swatch.dataset.swatch;
     }
+    console.log('swatch & '+ color);
 }
 
 // -------------------------------
@@ -88,6 +108,7 @@ main_area.addEventListener('click', (event) => {
     event.target.style.fill = color;
     push_version();
     artwork.style.fill = 'black'; // Keeps canvas black
+    color_picker.style.display = 'none !important';
 });
 
 // -------------------------------
@@ -188,4 +209,3 @@ function toggle_upload_screen() {
         upload_modal.classList.add('opened');
     }
 }
-

@@ -29,13 +29,11 @@
             crossorigin="anonymous">
         </script>
         <script src="dist/scripts/main-min.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
 </head>
 <body class="coloring-page">
-<div class="logo">
-    <a href="index.php">
-        <img class="logocoloring" src="graphics/logo.png">
-    </a>
-</div>
+        <div class="colorPicker"></div>
+<div id="logo"><a href="index.php"><img id="logo" src="graphics/logo.png"></a></div>
     <main id="colorpage">
         <div class="aside" id="top-aside">
             <div class="commands">
@@ -56,7 +54,6 @@
             <div class="swatches">
                 <div class="swatches-inner">
                     <div class="item stack"></div>
-                    <input type="color" class="item" title="Color Picker">
 
                     <div class="item swatch active" data-swatch="#ba2fff"></div>
                     <div class="item swatch" data-swatch="#7d00f9"></div>
