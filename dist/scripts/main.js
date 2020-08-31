@@ -7,8 +7,6 @@ const color_wheel = document.querySelector('.stack');
 const picker_close = document.querySelector('.picker-close');
 const picker_reflect = document.querySelector('.picker-reflect');
 
-var cp_visibility = 'visible'; //Default
-
 function toggleColorPicker() {
     if (document.querySelector('.move-up')) {
         color_picker.classList.toggle('move-up');
@@ -21,6 +19,7 @@ function toggleColorPicker() {
         hideColorPicker();
     }
 }
+hideColorPicker();
 
 function hideColorPicker() {
     color_picker.classList.toggle('hide');

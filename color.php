@@ -62,10 +62,8 @@
                             <div class="x"></div>
                         </div>
                     </div>
-                    <!-- <div class="picker-wrap"> -->
-                        <div class="item stack"></div>
-                        <div class="item picker-reflect" data-swatch="#7d00f9"></div>
-                    <!-- </div> -->
+                    <div class="item stack"></div>
+                    <div class="item picker-reflect"></div>
                     <div class="item swatch active" data-swatch="#ba2fff"></div>
                     <div class="item swatch" data-swatch="#7d00f9"></div>
                     <div class="item swatch" data-swatch="#4252fe"></div>
