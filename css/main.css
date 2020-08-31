@@ -81,7 +81,7 @@ h1 {
     padding: .5rem;
 }
 
-.thumbnails *:hover {
+.thumbnails img:hover, .thumbnails svg:hover {
     transform: scale(1.05);
 }
 
@@ -529,7 +529,7 @@ svg.IroSlider {
     transform: rotate(90deg);
 }
 
-.swatches * {
+.swatches *, .item.picker-reflect.active {
     transition: all .2s ease-in-out;
     -webkit-transition: all .2s ease-in-out;
 }
