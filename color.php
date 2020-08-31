@@ -46,7 +46,7 @@
                 <div class="command" title="Upload to 'User Colored'" data-command="upload"><img class="svg" src="graphics/upload.svg" alt="download"></div>
             </div>
             <div class="credit">
-                <p>Artist: <?php echo $row['artist']; ?></p>
+                <p><?php if ($table == 'artwork') {echo 'Artist';} else {echo 'Doodler';} ?>: <?php echo $row['artist']; ?></p>
             </div>
             </div>
         </div>
