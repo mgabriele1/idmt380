@@ -14,11 +14,11 @@
 <!--BODY-->
 <body>
     <header id="top">
-        <div class="logo">
-            <a href="index.php">
-                <img id="logo" src="graphics/logo.png">
-            </a>
-        </div>
+    <div class="logo">
+        <a href="index.php">
+            <img class="logoindex" src="graphics/logo.png">
+        </a>
+    </div>
     </header>
     <div class="modal" style="display: <?php if (!isset($_GET['upload'])) {echo 'none';} else {echo 'flex';} ?>">
         <div class="upload-success">
@@ -39,7 +39,7 @@
          }
         ?>
         
-        " id="tab1">Coloring Pages</div></a>
+        " id="tab1"><p>Coloring Pages</p></div></a>
         <a href="index.php?tab=user"><div class="tab
         
         <?php 
@@ -48,7 +48,7 @@
          }
         ?>
 
-        " id="tab2">User Colored</div></a>
+        " id="tab2"><p>User Colored</p></div></a>
     </div>
     <div class="image-grid user-created">
         <?php
