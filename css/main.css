@@ -35,7 +35,7 @@ a:link, a:visited, a:hover, a:active  {
     --green2: rgb(53, 212, 159);
     --blue2: rgb(0, 131, 245);
 
-    --tab-active: black;
+    --tab-active: #202020;
     --tab-back: rgba(0, 0, 0, 0.452);
     --tab-text: white;
     --background: rgb(103, 175, 96);;
@@ -53,7 +53,7 @@ body {
 
 .logocoloring {
     width: 100%;
-    max-width: 100px;
+    max-width: 80px;
 }
 
 h1 {
@@ -211,13 +211,14 @@ main {
 }
 
 #colorpage {
-    max-width: 500px;
-    padding: 0 1rem;
-    /* margin: 1rem auto;
+    /* max-width: 500px;
+    margin: 1rem auto;
     border: 8px solid white;
     border-radius: 10px;
     background-color: white;
     box-shadow: 0 0 7px 5px #00000046; */
+    width: 100%;
+    height: 100%;
 }
 
 .aside {
@@ -226,7 +227,6 @@ main {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-evenly;
-    padding: .5rem 1rem;
 }
 
 .aside:last-child {
@@ -260,6 +260,11 @@ main {
 }
 .canvas-buttons {
     display: flex;
+    align-items: center;
+}
+
+.canvas-buttons img {
+    height: 75%;
 }
 
 .item {
