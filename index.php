@@ -1,25 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<!--HEAD-->
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doodle Coloring Book</title>
-    <link rel="stylesheet" href="dist/css/main.css" type="text/css"/>
-    <link rel="icon" href="graphics/icon.ico" type='image/x-icon'/>
-    <link rel="stylesheet" href="https://use.typekit.net/ssy0mlu.css">
-</head>
-
-<!--BODY-->
-<body>
-    <header id="top">
-    <div class="logo">
-        <a href="index.php">
-            <img class="logoindex" src="graphics/logo.png">
-        </a>
-    </div>
-    </header>
+<?php
+    include_once 'includes/db.php';
+    $current_page = 'index';
+    include_once 'includes/head.php';
+?>
     <div class="modal" style="display: <?php if (!isset($_GET['upload'])) {echo 'none';} else {echo 'flex';} ?>">
         <div class="upload-success">
             <h1>Upload successful!</h1>
@@ -32,27 +15,26 @@
         <a href="index.php"><div class="tab
         
         <?php 
-         if (isset($_GET['tab'])) {
+            if (isset($_GET['tab'])) {
 
-         } else {
-             echo "activetab";
-         }
+            } else {
+                echo "activetab";
+            }
         ?>
         
         " id="tab1"><p>Coloring Pages</p></div></a>
         <a href="index.php?tab=user"><div class="tab
         
         <?php 
-         if (isset($_GET['tab'])) {
-            echo "activetab";
-         }
+            if (isset($_GET['tab'])) {
+                echo "activetab";
+            }
         ?>
 
         " id="tab2"><p>User Colored</p></div></a>
     </div>
     <div class="image-grid user-created">
         <?php
-            include_once 'includes/db.php';
             if (isset($_GET['tab'])) {
                 $table = 'community';
                 include_once 'includes/record_handler.php';
@@ -87,9 +69,5 @@
         </a>
     </footer>
 </body>
-    <script defer>
-        document.querySelector('#close-modal').addEventListener('click', () => {
-            document.querySelector('.modal').style.display = 'none';
-        })
-    </script>
+    <?php include_once 'include/footer.php'; ?>
 </html>

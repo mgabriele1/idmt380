@@ -1,6 +1,20 @@
-// -------------------------------
+// ----------------------------------------------------------------
+// >>>>>>>>>>>>>>>>>>>>>>>>>> INDEX PAGE <<<<<<<<<<<<<<<<<<<<<<<<<<
+// ----------------------------------------------------------------
+
+if (current_page == 'index') {
+    document.querySelector('#close-modal').addEventListener('click', () => {
+        document.querySelector('.modal').style.display = 'none';
+    })
+}
+
+// ----------------------------------------------------------------
+// >>>>>>>>>>>>>>>>>>>>>>>>>> COLOR PAGE <<<<<<<<<<<<<<<<<<<<<<<<<<
+// ----------------------------------------------------------------
+
+// --------------------------------
 // COLOR WHEEL & PICKER
-// -------------------------------
+// --------------------------------
 
 const color_picker = document.querySelector('.colorPicker');
 const color_wheel = document.querySelector('.stack');
@@ -76,9 +90,9 @@ colorPicker.on(["color:init", "color:change"], function(color){
     picker_reflect.style.backgroundColor = hex;
 });
 
-// -------------------------------
+// --------------------------------
 // SWATCHES
-// -------------------------------
+// --------------------------------
 
 const swatch_container = document.querySelector('.swatches');
 const top_aside = document.querySelector('#top-aside');
@@ -129,9 +143,9 @@ function choose_color() {
     }
 }
 
-// -------------------------------
+// --------------------------------
 // DOWNLOAD THE PAINTING
-// -------------------------------
+// --------------------------------
 
 const download_btn = document.querySelector('[data-command="download"]');
 
@@ -145,9 +159,9 @@ download_btn.addEventListener('click', () => {
     element.remove();
 });
 
-// -------------------------------
+// --------------------------------
 // FILL TOOL
-// -------------------------------
+// --------------------------------
 
 function resetArtworkVar() {
     artwork = document.querySelector(".main-area svg"); // Re-vars the svg as artwork
@@ -172,13 +186,9 @@ main_area.addEventListener('click', (event) => {
     }
 });
 
-// -------------------------------
+// --------------------------------
 // UNDO FUNCTION
-//
-// Logic:
-// Clicking Edit >>> If Versions Array length is 30, delete last in Versions Array, then push the new edit to beginning. Counter-clockwise
-// Clicking Undo >>> Delete current artwork on page, inject Versions[0] to main-area, delete Versions[0].
-// -------------------------------
+// --------------------------------
 
 let versions = [artwork.cloneNode(true)]; // Init the Versions Array, put default as first element in Versions
 
@@ -207,9 +217,9 @@ function undo() {
     }
 }
 
-// -------------------------------
+// --------------------------------
 // UPLOAD BUTTON
-// -------------------------------
+// --------------------------------
 
 const upload_btn = document.querySelector('[data-command="upload"]');
 const upload_preview_container = document.querySelector('.upload-preview');
@@ -232,9 +242,9 @@ upload_btn.addEventListener('click', () => {
 
 var upload_modal = document.querySelector('.upload-modal');
 
-// -------------------------------
+// --------------------------------
 // TOGGLING THE UPLOAD SCREEN
-// -------------------------------
+// --------------------------------
 
 const upload_reset_btn = document.querySelector('button[type="reset"]');
 
