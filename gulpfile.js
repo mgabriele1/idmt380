@@ -17,18 +17,26 @@ gulp.task('minify-js', () => {
     .pipe(gulp.dest('dist/scripts'));
 });
 
-// Minify HTML (You can listen for .PHP files but only the HTML is minified)
+// Minify Source HTML
 var htmlmin = require('gulp-htmlmin');
-gulp.task('minify-html', function() {
+gulp.task('minify-html-src', function() {
     return gulp.src('*.php')
     .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(gulp.dest('dist'));
 });
 
+// Minify Include HTML
+gulp.task('minify-html-inc', function() {
+    return gulp.src('includes/*.php')
+    .pipe(htmlmin({ collapseWhitespace: true }))
+    .pipe(gulp.dest('dist/includes'));
+});
+
 // Watch Tasks
 gulp.watch('css/*.css', gulp.series(['minify-css']));
 gulp.watch('scripts/*.js', gulp.series(['minify-js']));
-gulp.watch('*.php', gulp.series(['minify-html']));
+gulp.watch('includes/*.php', gulp.series(['minify-html-src']));
+gulp.watch('*.php', gulp.series(['minify-html-inc']));
 
 // Default Gulp Task
-gulp.task('default', gulp.parallel('minify-css', 'minify-js', 'minify-html'));
+gulp.task('default', gulp.parallel('minify-css', 'minify-js', 'minify-html-src', 'minify-html-inc'));
