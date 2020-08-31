@@ -7,44 +7,50 @@ const color_wheel = document.querySelector('.stack');
 const picker_close = document.querySelector('.picker-close');
 const picker_reflect = document.querySelector('.picker-reflect');
 
-function toggleColorPicker() {
-    if (document.querySelector('.move-up')) {
-        color_picker.classList.toggle('move-up');
-        picker_reflect.classList.toggle('squish');
-        setTimeout(function() {
-            color_picker.classList.toggle('hide');
-            picker_reflect.classList.toggle('hide');
-        }, 250);
-    } else {
+function togglePicker() {
+    if (color_mode == 'picker') {
+        if (!document.querySelector('.move-up')) {
+            showAllPicker();
+        } else {
+            hideJustPicker()
+        }
+    } else if (color_mode == 'swatch') {
         hideColorPicker();
     }
 }
-hideColorPicker();
+
+function showAllPicker() {
+    color_picker.classList.remove('hide');
+    picker_reflect.classList.remove('hide');
+    setTimeout(function() {
+        color_picker.classList.add('move-up');
+        picker_reflect.classList.remove('squish');
+    }, 250);
+}
 
 function hideColorPicker() {
-    color_picker.classList.toggle('hide');
-        picker_reflect.classList.toggle('hide');
-        setTimeout(function() {
-            color_picker.classList.toggle('move-up');
-            picker_reflect.classList.toggle('squish');
-        }, 250);
+    color_picker.classList.remove('move-up');
+    picker_reflect.classList.remove('squish');
+    setTimeout(function() {
+        color_picker.classList.add('hide');
+        picker_reflect.classList.add('hide');
+    }, 250);
 }
+hideColorPicker();
 
 function hideJustPicker() {
-    color_picker.classList.toggle('hide');
-        // picker_reflect.classList.toggle('hide');
-        setTimeout(function() {
-            // picker_reflect.classList.toggle('squish');
-            color_picker.classList.toggle('move-up');
+    color_picker.classList.remove('move-up');
+    setTimeout(function() {
+        color_picker.classList.add('hide');
         }, 250);
 }
 
-picker_close.addEventListener('click', toggleColorPicker);
+picker_close.addEventListener('click', togglePicker);
 
 color_wheel.addEventListener('click', () => {
     reset_active_swatch();
-    toggleColorPicker();
     color_mode = 'picker';
+    togglePicker();
     picker_reflect.classList.add('active');
 });
 
@@ -82,12 +88,6 @@ window.onresize = responsivenessCheck;
 responsivenessCheck();
 
 function responsivenessCheck() {
-    if (swatch_container.offsetHeight > 50) {
-        swatch_container.style.justifyContent = 'center';
-    } else {
-        swatch_container.style.justifyContent = 'space-between';
-    }
-
     if (top_aside.offsetHeight > 60) {
         top_aside.style.justifyContent = 'center';
     } else {
@@ -105,7 +105,7 @@ swatches.forEach(swatch => {
         swatch.classList.add('active'); // Set the clicked swatch to the active swatch
         color_mode = 'swatch'; // Set the color mode to Swatch
         new_swatch = swatch; // Set the new swatch
-        hideColorPicker();
+        togglePicker();
     })
 });
 
@@ -161,7 +161,7 @@ main_area.addEventListener('click', (event) => {
     // that would break the listener if it were set to the SVG,
     // var 'event' is a sub variable that gets redefined each click
     if (document.querySelector('.move-up')) {
-        hideJustPicker();
+        togglePicker();
     } else {
         choose_color();
         push_version();
