@@ -36,6 +36,6 @@
             } else {
                 echo "No artwork to show!";
             }
-            ?> </div><footer><a class="back-to-top" href="#top"><img class="b2t" src="graphics/btt.svg" alt="back to top"></a></footer></body><script defer="defer">document.querySelector('#close-modal').addEventListener('click', () => {
+            ?> <a class="back-to-top" href="#top"><img class="b2t" src="graphics/btt.svg" alt="back to top"></a></div></body><script defer="defer">document.querySelector('#close-modal').addEventListener('click', () => {
             document.querySelector('.modal').style.display = 'none';
         })</script></html>

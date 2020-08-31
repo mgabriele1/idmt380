@@ -54,8 +54,8 @@
             <?php include_once 'graphics/'.$table.'/'.$row['image']; ?>
         </div>
         <div class="aside">
-            <div class="swatches">
-                <div class="swatches-inner">
+            <div id="swatch-out" class="swatches">
+                <div id="swatch-in" class="swatches-inner">
                     <div class="colorPicker move-up">
                         <div class="picker-close">
                             <div class="x"></div>

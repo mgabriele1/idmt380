@@ -251,3 +251,19 @@ function toggle_upload_screen() {
         upload_modal.classList.add('opened');
     }
 }
+
+// -------------------------------
+// COLOR SWATCH SCROLL/ CENTER
+// -------------------------------
+
+var outerSwatch = document.getElementById("swatch-out");
+var outerWidth = outerSwatch.clientWidth;
+var innerWidth = document.getElementById("swatch-in").clientWidth;
+
+if (outerWidth > innerWidth) {
+    outerSwatch.classList.remove("swatches");
+    outerSwatch.classList.add("swatches-wide");
+} else {
+    outerSwatch.classList.add("swatches");
+    outerSwatch.classList.remove("swatches-wide");
+}

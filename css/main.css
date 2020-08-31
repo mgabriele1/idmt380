@@ -107,7 +107,7 @@ h1 {
 	}
 }
 
-footer, .back-to-top {
+.back-to-top {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -115,7 +115,7 @@ footer, .back-to-top {
 
 .b2t {
     width: 5rem;
-    padding-bottom: 1.5rem;
+    padding: 1.5rem 0;
 }
 
 .upload-success {
@@ -189,9 +189,6 @@ button:hover, .item:hover {
     background-color:var(--tab-active);
     padding: 1rem .5rem;
 }
-footer {
-    background-color:var(--tab-active);
-}
 
 /* Home Media Queries */
 
@@ -204,27 +201,6 @@ footer {
 @media only screen and (min-width: 1000px) {
     .thumbnails {
         width: calc(100% / 4);
-    }
-}
-
-/* Media Queries */
-
-@media only screen and (min-width: 550px) {
-    .logoindex {
-        max-width: 150px;
-    }
-    .logocoloring {
-        max-width: 100px;
-        padding-top: .5rem;
-    }
-    #logo {
-        padding-left: 1rem;
-    }
-    .commands {
-        margin: .25rem;
-    }
-    .canvas-buttons img {
-        margin: 0 .25rem;
     }
 }
 
@@ -299,6 +275,7 @@ main {
 .credit {
     justify-self: flex-end;
     font-size: .75rem;
+    padding-right: .25rem;
 }
 
 .canvas-buttons {
@@ -308,6 +285,7 @@ main {
 .canvas-buttons img {
     width: 1.5rem;
     height: 1.5rem;
+    margin: 0 .25rem;
 }
 
 .item {
@@ -316,7 +294,7 @@ main {
     margin: .25rem;
 }
 
-.swatches {
+.swatches-wide {
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
@@ -325,6 +303,16 @@ main {
     padding: .25rem;
     justify-content: center;
 }
+
+.swatches {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    display: inline-block;
+    width: 100%;
+    padding: .25rem;
+}
+
 .swatches-inner {
     display: inline-block;
 }
@@ -553,4 +541,31 @@ svg.IroSlider {
     width: 0;
     margin: 0;
     z-index: 0;
+}
+
+/* Media Queries */
+
+@media only screen and (min-width: 550px) {
+    .logoindex {
+        max-width: 150px;
+    }
+    .logocoloring {
+        max-width: 100px;
+        padding-top: .5rem;
+    }
+    #logo {
+        padding-left: 1rem;
+    }
+    .commands {
+        margin: .25rem;
+    }
+    .canvas-buttons img {
+        margin: 0 .5rem;
+    }
+    .credit {
+        padding-right: .5rem;
+    }
+    .tab, .credit{
+        font-size: 1rem;
+    }
 }

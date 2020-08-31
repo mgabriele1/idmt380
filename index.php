@@ -80,12 +80,10 @@
                 echo "No artwork to show!";
             }
             ?>
-    </div>
-    <footer>
         <a class="back-to-top" href="#top">
             <img class="b2t" src="graphics/btt.svg" alt="back to top">
         </a>
-    </footer>
+    </div>
 </body>
     <script defer>
         document.querySelector('#close-modal').addEventListener('click', () => {
