@@ -512,6 +512,7 @@ svg.IroSlider {
     right: 0;
     padding: 0.5rem .85rem;
     transform: rotate(45deg);
+    box-shadow: 0 0 7px 5px #00000025;
 }
 
 .picker-close:hover {
