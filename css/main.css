@@ -458,7 +458,7 @@ button[type="reset"]:hover {
     bottom: 10%;
     left: 0;
     border-radius: 50%;
-    display: none;
+    /* display: none; */
 }
 
 svg.IroSlider {
