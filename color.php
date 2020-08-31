@@ -32,7 +32,11 @@
         <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
 </head>
 <body class="coloring-page">
-<div id="logo"><a href="index.php"><img id="logo" src="graphics/logo.png"></a></div>
+    <div class="logo">
+            <a href="index.php">
+                <img class="logocoloring" src="graphics/logo.png">
+            </a>
+        </div>
     <main id="colorpage">
         <div class="aside" id="top-aside">
             <div class="commands">
