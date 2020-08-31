@@ -140,6 +140,7 @@ download_btn.addEventListener('click', () => {
 function resetArtworkVar() {
     artwork = document.querySelector(".main-area svg"); // Re-vars the svg as artwork
 }
+resetArtworkVar();
 
 const main_area = document.querySelector(".main-area");
 
