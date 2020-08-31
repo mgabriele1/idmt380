@@ -88,11 +88,6 @@
     </footer>
 </body>
     <script defer>
-        window.onresize = () => {
-            const show_all = document.querySelector('div#show-all');
-            console.log(document.querySelector('.thumbnails svg:first-of-type').clientHeight);
-            show_all.style.height = document.querySelector('.thumbnails svg:first-of-type').clientHeight + 'px';
-        };
         document.querySelector('#close-modal').addEventListener('click', () => {
             document.querySelector('.modal').style.display = 'none';
         })

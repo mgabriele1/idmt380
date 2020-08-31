@@ -461,12 +461,63 @@ button[type="reset"]:hover {
     height: 280px;
     margin: auto calc(50% - (280px/2));
     position: fixed;
-    bottom: 10%;
+    bottom: -50%;
     left: 0;
     border-radius: 50%;
-    display: none !important;
+    /* display: none !important; */
 }
 
 svg.IroSlider {
     display: none !important;
+}
+
+.picker-close {
+    background-color: #fff;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    position: absolute;
+    right: 0;
+    padding: 0.5rem .85rem;
+    transform: rotate(45deg);
+}
+
+.picker-close:hover {
+    transform: rotate(45deg) scale(1.15);
+}
+
+.picker-close .x {
+    width: .25rem;
+    height: 1rem;
+    background-color: #000;
+    position: absolute;
+}
+
+.x:first-of-type {
+    transform: rotate(90deg);
+}
+
+.swatches * {
+    transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+}
+
+.picker-reflect {
+    background-color: white;
+    border-radius: 50%;
+}
+
+.hide {
+    display: none !important;
+}
+
+.move-up {
+    bottom: 10% !important;
+}
+
+.squish {
+    transform: translateX(-3rem) scale(0);
+    width: 0;
+    margin: 0;
+    z-index: 0;
 }

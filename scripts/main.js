@@ -1,13 +1,40 @@
 // -------------------------------
-// COLOR WHEEL
+// COLOR WHEEL & PICKER
 // -------------------------------
 
 const color_picker = document.querySelector('.colorPicker');
 const color_wheel = document.querySelector('.stack');
-color_wheel.classList.add('swatch');
+const picker_close = document.querySelector('.picker-close');
+const picker_reflect = document.querySelector('.picker-reflect');
+
+var cp_visibility = 'visible'; //Default
+
+function toggleColorPicker() {
+    if (document.querySelector('.move-up')) {
+        color_picker.classList.toggle('move-up');
+        picker_reflect.classList.toggle('squish');
+        setTimeout(function() {
+            color_picker.classList.toggle('hide');
+            picker_reflect.classList.toggle('hide');
+        }, 250);
+    } else {
+        hideColorPicker();
+    }
+}
+
+function hideColorPicker() {
+    color_picker.classList.toggle('hide');
+        picker_reflect.classList.toggle('hide');
+        setTimeout(function() {
+            picker_reflect.classList.toggle('squish');
+            color_picker.classList.toggle('move-up');
+        }, 250);
+}
+
+picker_close.addEventListener('click', toggleColorPicker);
 
 color_wheel.addEventListener('click', () => {
-    color_picker.hidden; // The color input is hidden, so if you click the picker, redirect the click to the input
+    toggleColorPicker();
     color_mode = 'picker';
 });
 
@@ -30,7 +57,7 @@ var colorPicker = new iro.ColorPicker(".colorPicker", {
 colorPicker.on(["color:init", "color:change"], function(color){
     // https://iro.js.org/guide.html#color-picker-events
     var hex = colorPicker.color.hexString;
-    color_wheel.style.borderColor = hex;
+    picker_reflect.style.backgroundColor = hex;
 });
 
 // -------------------------------
@@ -73,7 +100,6 @@ swatches.forEach(swatch => {
 
 color_picker.addEventListener('click', () => {
     color_mode = 'picker'; // Set the color mode to Picker
-
     reset_active_swatch();
 });
 
@@ -90,7 +116,6 @@ function choose_color() {
     } else if (color_mode == 'swatch') {
         color = new_swatch.dataset.swatch;
     }
-    console.log('swatch & '+ color);
 }
 
 // -------------------------------
@@ -104,11 +129,15 @@ main_area.addEventListener('click', (event) => {
     // Click listener is set to main area because the SVG gets removed and appended,
     // that would break the listener if it were set to the SVG,
     // var 'event' is a sub variable that gets redefined each click
-    choose_color();
-    event.target.style.fill = color;
-    push_version();
-    artwork.style.fill = 'black'; // Keeps canvas black
-    color_picker.style.display = 'none !important';
+    if (document.querySelector('.move-up')) {
+        hideColorPicker();
+    } else {
+        choose_color();
+        event.target.style.fill = color;
+        push_version();
+        artwork.style.fill = 'black'; // Keeps canvas black
+        color_picker.style.display = 'none !important';
+    }
 });
 
 // -------------------------------
@@ -184,7 +213,6 @@ upload_btn.addEventListener('click', () => {
     upload_preview_container.appendChild(v_artwork);
     
     artwork_input.value = main_area.innerHTML;
-    console.log(artwork_input.value);
     toggle_upload_screen();
 })
 

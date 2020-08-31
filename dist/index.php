@@ -36,11 +36,6 @@
             } else {
                 echo "No artwork to show!";
             }
-            ?> </div><footer><a class="back-to-top" href="#top"><img class="b2t" src="graphics/btt.svg" alt="back to top"></a></footer></body><script defer="defer">window.onresize = () => {
-            const show_all = document.querySelector('div#show-all');
-            console.log(document.querySelector('.thumbnails svg:first-of-type').clientHeight);
-            show_all.style.height = document.querySelector('.thumbnails svg:first-of-type').clientHeight + 'px';
-        };
-        document.querySelector('#close-modal').addEventListener('click', () => {
+            ?> </div><footer><a class="back-to-top" href="#top"><img class="b2t" src="graphics/btt.svg" alt="back to top"></a></footer></body><script defer="defer">document.querySelector('#close-modal').addEventListener('click', () => {
             document.querySelector('.modal').style.display = 'none';
         })</script></html>
