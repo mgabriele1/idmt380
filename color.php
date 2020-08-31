@@ -1,6 +1,6 @@
 <?php
     $current_page = 'color';
-    include_once 'dist/includes/head.php';
+    include_once 'includes/head.php';
 
     $table = $_GET['table'];
     $id = $_GET['id'];
@@ -69,4 +69,4 @@
             </form>
         </div>
     </div>
-<?php }} include_once 'dist/include/footer.php'; ?>
+<?php }} include_once 'includes/footer.php'; ?>

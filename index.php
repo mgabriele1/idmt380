@@ -1,6 +1,6 @@
 <?php
     $current_page = 'index';
-    include_once 'dist/includes/head.php';
+    include_once 'includes/head.php';
 ?>
     <div class="modal" style="display: <?php if (!isset($_GET['upload'])) {echo 'none';} else {echo 'flex';} ?>">
         <div class="upload-success">
@@ -36,7 +36,7 @@
         <?php
             if (isset($_GET['tab'])) {
                 $table = 'community';
-                include_once 'dist/includes/record_handler.php';
+                include_once 'includes/record_handler.php';
                 // $the_echo = include_once 'graphics/.'$table'./'.$row['image'];
                 $sql = "SELECT * FROM $table ORDER BY timestamp DESC LIMIT 100;";
             } else {
@@ -65,4 +65,4 @@
             <img class="b2t" src="graphics/btt.svg" alt="back to top">
         </a>
     </div>
-<?php include_once 'dist/include/footer.php'; ?>
+<?php include_once 'includes/footer.php'; ?>

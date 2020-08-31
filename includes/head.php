@@ -6,7 +6,7 @@
     <title>Doodle Book</title>
     <link rel="stylesheet" href="dist/css/main.css" type="text/css"/>
     <link rel="icon" href="graphics/icon.ico" type='image/x-icon'/>
-    <?php include_once 'dist/includes/db.php';
+    <?php include_once 'includes/db.php';
     if ($current_page == 'color') { ?>
         <script
             src="https://code.jquery.com/jquery-3.5.1.min.js"
