@@ -18,11 +18,19 @@
         <script>var current_page = '<?php echo $current_page ?>';</script>
     <?php } ?>
 </head>
-<body <?php if ($current_page == 'color') { echo 'class="color-page"';} ?>>
+<body <?php if ($current_page == 'color') { echo 'class="coloring-page"';} ?>>
     <header id="top">
-        <div class="logo">
+        <div <?php if ($current_page != 'color') { echo 'class="logo"';} ?>>
             <a href="index.php">
-                <img class="logoindex" src="graphics/logo.png">
+                <img 
+                <?php 
+                if ($current_page == 'color') { 
+                    echo 'class="logocoloring"';
+                } else {
+                    echo 'class="logoindex"';
+                }
+                ?> 
+                src="graphics/logo.png">
             </a>
         </div>
     </header>
