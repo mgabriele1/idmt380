@@ -27,4 +27,5 @@ These files do the following tasks for workflow
 
 ## Gulp
 
-This project uses Gulp to minify the CSS and JS, these files are sent to the `dist` folder.
+1. This project uses Gulp to minify the CSS and JS, these files are sent to the `dist` folder.
+2. Gulp Watch is enabled by default, this activates the minifier functions in #1.
