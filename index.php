@@ -48,7 +48,7 @@
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
 
-                        echo "<a href='color.php?table={$table}&id={$row['id']}' class='thumbnails' title='Artwork by: {$row['artist']}'>";
+                        echo "<a href='color.php?table={$table}&id={$row['id']}&illustrator={$row['artist']}' class='thumbnails' title='Artwork by: {$row['artist']}'>";
                         if (isset($_GET['tab'])) {
                             include_once 'graphics/'.$table.'/'.$row['image'];
                         } else {

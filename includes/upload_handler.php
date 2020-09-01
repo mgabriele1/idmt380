@@ -1,7 +1,7 @@
 <?php
     include_once 'db.php';
     $table = 'community';
-    
+
     $artist = mysqli_real_escape_string($connection, $_POST ['artist']);
     $svg = mysqli_real_escape_string($connection, $_POST ['image']);
     $fileName = uniqid() . '.svg';
