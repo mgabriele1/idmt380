@@ -15,11 +15,6 @@
     <main id="colorpage">
         <div class="aside" id="top-aside">
             <div class="commands">
-            <div class="canvas-buttons">
-                <div class="command" title="Undo" data-command="undo"><img class="svg" src="graphics/undo.svg" alt="undo"></div>
-                <div class="command" title="Download" data-command="download"><img class="svg" src="graphics/download.svg" alt="download"></div>
-                <div class="command" title="Upload to 'User Colored'" data-command="upload"><img class="svg" src="graphics/upload.svg" alt="download"></div>
-            </div>
             <div class="credit">
                 <p><?php if ($table == 'community') {echo 'Colorer: ' . $row['artist'];} ?></p>
                 <p> <?php echo 'Illustrator: ' . $row['artist']; ?></p>
@@ -30,6 +25,11 @@
             <?php include_once 'graphics/'.$table.'/'.$row['image']; ?>
         </div>
         <div class="aside">
+            <div class="canvas-buttons">
+                <div class="command" title="Upload to 'User Colored'" data-command="upload"><img class="svg" src="graphics/upload.svg" alt="download"><p>Upload</p></div>
+                <div class="command" title="Undo" data-command="undo"><img class="svg" src="graphics/undo.svg" alt="undo"><p>Undo</p></div>
+                <div class="command" title="Download" data-command="download"><img class="svg" src="graphics/download.svg" alt="download"><p>Download</p></div>
+            </div>
             <div id="swatch-out" class="swatches">
                 <div id="swatch-in" class="swatches-inner">
                     <div class="colorPicker move-up">
