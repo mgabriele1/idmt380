@@ -22,7 +22,7 @@
     $result = mysqli_query($connection, $query);
 
     if ($result) {
-        header('Location: ../index.php?tab=user');
+        header('Location: ../index.php?tab=user&upload');
     } else {
         echo 'Failed to add artwork.';
     }

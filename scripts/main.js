@@ -3,14 +3,18 @@
 // ----------------------------------------------------------------
 
 if (current_page == 'index') {
+
     document.querySelector('#close-modal').addEventListener('click', () => {
         document.querySelector('.modal').style.display = 'none';
-    })
+    });
+    
 }
 
 // ----------------------------------------------------------------
 // >>>>>>>>>>>>>>>>>>>>>>>>>> COLOR PAGE <<<<<<<<<<<<<<<<<<<<<<<<<<
 // ----------------------------------------------------------------
+
+if (current_page == 'color') {
 
 // --------------------------------
 // COLOR WHEEL & PICKER
@@ -276,4 +280,6 @@ if (outerWidth > innerWidth) {
 } else {
     outerSwatch.classList.add("swatches");
     outerSwatch.classList.remove("swatches-wide");
+}
+
 }
