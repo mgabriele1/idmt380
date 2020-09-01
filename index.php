@@ -32,7 +32,7 @@
 
         " id="tab2"><p>User Colored</p></div></a>
     </div>
-    <div class="image-grid user-created">
+    <div class="image-grid">
         <?php
             if (isset($_GET['tab'])) {
                 $table = 'community';

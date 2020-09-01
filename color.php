@@ -4,7 +4,6 @@
 
     $table = $_GET['table'];
     $id = $_GET['id'];
-    if ($table == 'artwork') {$credit_word = 'Doodle';} else {$credit_word = 'Painted';}
 
     $sql = "SELECT * FROM {$table} WHERE id={$id};";
 
@@ -22,7 +21,8 @@
                 <div class="command" title="Upload to 'User Colored'" data-command="upload"><img class="svg" src="graphics/upload.svg" alt="download"></div>
             </div>
             <div class="credit">
-                <p><?php if ($table == 'artwork') {echo 'Illustration';} else {echo 'Doodler';} ?>: <?php echo $row['artist']; ?></p>
+                <p><?php if ($table == 'community') {echo 'Colorer: ' . $row['artist'];} ?></p>
+                <p> <?php echo 'Illustrator: ' . $row['artist']; ?></p>
             </div>
             </div>
         </div>
