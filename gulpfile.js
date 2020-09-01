@@ -4,7 +4,7 @@ const gulp = require('gulp');
 // Minify CSS
 const cleanCSS = require('gulp-clean-css');
 gulp.task('minify-css', () => {
-    return gulp.src('css/*.css')
+    return gulp.src(['css/*.css', '!css/normalize.css'])
     .pipe(cleanCSS({compatibility: 'ie8'}))
     .pipe(gulp.dest('dist/css'));
 });
@@ -13,7 +13,7 @@ gulp.task('minify-css', () => {
 const minify = require('gulp-minify');
 gulp.task('minify-js', () => {
     return gulp.src(['scripts/*.js'])
-    .pipe(minify())
+    .pipe(minify({noSource: true}))
     .pipe(gulp.dest('dist/scripts'));
 });
 
