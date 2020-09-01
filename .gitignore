@@ -6,8 +6,9 @@
 ehthumbs.db
 Thumbs.db
 graphics/community/*
-!graphics/community/5f4c42924eb1b.svg
 dist
+*.sql
+!db-import.sql
 
 # Icon must end with two \r
 Icon
@@ -59,7 +60,6 @@ Temporary Items
 # Logs and databases #
 ######################
 *.log
-*.sql
 *.sqlite
 db.php
 

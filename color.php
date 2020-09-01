@@ -6,19 +6,26 @@
     $id = $_GET['id'];
 
     $sql = "SELECT * FROM {$table} WHERE id={$id};";
-
+    
     $result = mysqli_query($connection, $sql);
     $resultCheck = mysqli_num_rows($result);
     if ($resultCheck > 0) {
         if ($row = mysqli_fetch_assoc($result)) {
+            $artist = $row['artist'];
 ?>
     <main id="colorpage">
         <div class="aside" id="top-aside">
             <div class="commands">
-            <div class="credit">
-                <p><?php if ($table == 'community') {echo 'Colorer: ' . $row['artist'];} ?></p>
-                <p> <?php echo 'Illustrator: ' . $row['artist']; ?></p>
-            </div>
+                <div class="credit">
+                    <p><?php echo 'Illustrator: ' . $artist; ?></p>
+                </div>
+                <?php if ($table == 'community') { ?>
+                    <div class="credit">
+                        <p>
+                            <?php echo 'Colorer: ' . $row['doodler']; ?>
+                        </p>
+                    </div>
+                <?php } ?>
             </div>
         </div>
         <div class="main-area">
@@ -60,8 +67,9 @@
             <div class="upload-preview"></div>
             <form id="upload-form" action="includes/upload_handler.php" method="POST">
                 <input type="text" name="image" id="artwork-html" hidden>
+                <input type="text" name="artist" value="<?php echo $artist; ?>" hidden>
                 <label for="name">Your name</label>
-                <input required maxlength="15" type="text" name="artist" placeholder="Enter Your Name">
+                <input required maxlength="15" type="text" name="doodler" placeholder="Enter Your Name">
                 <div class="half">
                     <button name="submit" type="submit">Submit</button>
                     <button type="reset">Cancel</button>

@@ -6,7 +6,7 @@
         <div class="upload-success">
             <h1>Upload successful!</h1>
             <p>Your artwork is now featured at the top.</p>
-            <button id="close-modal">Close</button>
+            <button id="close-modal">Okay</button>
         </div>
     </div>
     <!--tab switching-->

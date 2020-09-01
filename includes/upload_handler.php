@@ -3,8 +3,9 @@
     $table = 'community';
 
     $artist = mysqli_real_escape_string($connection, $_POST ['artist']);
+    $doodler = mysqli_real_escape_string($connection, $_POST ['doodler']);
     $svg = mysqli_real_escape_string($connection, $_POST ['image']);
-    $fileName = uniqid() . '.svg';
+    $fileName = uniqid(mt_rand()) . '.svg';
     file_put_contents('../graphics/'.$table.'/' . $fileName, stripslashes($svg));
     
     $sql = "SELECT image FROM $table WHERE image=$fileName;";
@@ -12,8 +13,8 @@
     
             if (strpos($svg, 'rgb') !== false) { // Check if $image is colored
                 // Perform the insert
-                $query = "INSERT INTO $table (artist, image)
-                VALUES ('$artist', '$fileName');";
+                $query = "INSERT INTO $table (artist, doodler, image)
+                VALUES ('$artist', '$doodler', '$fileName');";
             } else {
                 // Throw error
                 die('This artwork is not even colored...');
