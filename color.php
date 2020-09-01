@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="main-area">
-            <?php include_once 'graphics/'.$table.'/'.$row['image']; ?>
+            <?php echo file_get_contents('graphics/'.$table.'/'.$row['image']); ?>
         </div>
         <div class="aside">
             <div class="canvas-buttons">

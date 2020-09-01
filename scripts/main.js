@@ -196,8 +196,6 @@ main_area.addEventListener('click', (event) => {
 
 let versions = [artwork.cloneNode(true)]; // Init the Versions Array, put default as first element in Versions
 
-// Edit
-
 function push_version() {
     resetArtworkVar();
         if (versions.length == 30) { // 30 = Max undo

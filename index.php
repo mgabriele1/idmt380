@@ -13,7 +13,7 @@
     <div class="tabs">
         <a href="index.php"><div class="tab
         
-        <?php 
+        <?php
             if (isset($_GET['tab'])) {
 
             } else {
@@ -50,7 +50,7 @@
 
                         echo "<a href='color.php?table={$table}&id={$row['id']}' class='thumbnails' title='Artwork by: {$row['artist']}'>";
                         if (isset($_GET['tab'])) {
-                            include_once 'graphics/'.$table.'/'.$row['image'];
+                            echo file_get_contents('graphics/'.$table.'/'.$row['image']);
                         } else {
                             echo "<img src='graphics/artwork/{$row['image']}' alt='{$row['artist']}'>";
                         }
