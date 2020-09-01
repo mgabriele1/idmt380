@@ -18,7 +18,7 @@
 
 Part of this build is a record handler `includes/record-handler.php` & `includes/upload-handler`
 
-These files do the following tasks for workflow
+These files do the following tasks for workflow:
 
 1. When a user uploads a Doodle, PHP checks if there are more than 100 records (this limit is editable), if so deletes the oldest record.
 2. If a user created file in `graphics/community` exists without a matching record in the database, it will be deleted.
