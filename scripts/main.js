@@ -282,4 +282,7 @@ if (outerWidth > innerWidth) {
     outerSwatch.classList.remove("swatches-wide");
 }
 
+var buttonsWidth = document.getElementById("canvb").clientWidth;
+buttonsWidth = innerWidth;
+
 }
