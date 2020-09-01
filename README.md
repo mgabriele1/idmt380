@@ -9,8 +9,7 @@
 1. Set the server root to the root of this project directory.
 2. Open PHPMyAdmin in MAMP.
 > Most likely -> http://localhost:8888/phpMyAdmin/index.php
-3. Goto IMPORT tab and import `db-import.sql` located in the project root
-No additional action required, navigate to your local server and test!
+3. Goto IMPORT tab and import `db-import.sql` located in the project root. No additional action required, navigate to your local server and start working!
 > Most likely -> http://localhost:8888/
 
 # Workflow Features
