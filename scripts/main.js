@@ -16,6 +16,8 @@ if (current_page == 'index') {
 
 if (current_page == 'color') {
 
+    var main_area = document.querySelector(".main-area");
+
 // --------------------------------
 // COLOR WHEEL & PICKER
 // --------------------------------
@@ -150,11 +152,9 @@ download_btn.addEventListener('click', () => {
 // --------------------------------
 
 function resetArtworkVar() {
-    artwork = document.querySelector(".main-area svg"); // Re-vars the svg as artwork
+    window.artwork = document.querySelector(".main-area svg"); // Re-vars the svg as artwork
 }
 resetArtworkVar();
-
-const main_area = document.querySelector(".main-area");
 
 main_area.addEventListener('click', (event) => {
     // Click listener is set to main area because the SVG gets removed and appended,
@@ -167,7 +167,7 @@ main_area.addEventListener('click', (event) => {
         push_version();
         resetArtworkVar();
         event.target.style.fill = color;
-        artwork.style.fill = 'black'; // Keeps canvas black
+        window.artwork.style.fill = 'black'; // Keeps canvas black
         color_picker.style.display = 'none !important';
     }
 });
@@ -176,15 +176,17 @@ main_area.addEventListener('click', (event) => {
 // UNDO FUNCTION
 // --------------------------------
 
-let versions = [artwork.cloneNode(true)]; // Init the Versions Array, put default as first element in Versions
+window.versions = [window.artwork.cloneNode(true)]; // Init the Versions Array, put default as first element in Versions
+console.log('Default '+window.versions);
 
 function push_version() {
+    console.log('Push Version '+window.versions);
     resetArtworkVar();
-        if (versions.length == 30) { // 30 = Max undo
-            versions.pop(); // Removes last element in Versions
+        if (window.versions.length === 30) { // 30 = Max undo
+            window.versions.pop(); // Removes last element in Versions
         }
-    var v_artwork = artwork.cloneNode(true);
-    versions.unshift(v_artwork); // Adds current artwork to beginning of Versions
+    var v_artwork = window.artwork.cloneNode(true);
+    window.versions.unshift(v_artwork); // Adds current artwork to beginning of Versions
 }
 
 const undo_btn = document.querySelector('[data-command="undo"]')
@@ -192,12 +194,12 @@ undo_btn.addEventListener('click', undo);
 
 function undo() {
     resetArtworkVar();
-    if (versions.length == 0) {
+    if (window.versions.length == 0) {
         alert('There is nothing to undo!');
     } else {
         artwork.remove(); // Removes the artwork on page
-        main_area.appendChild(versions[0]); // Insert last version into main-area area
-        versions.shift(); // Deletes first element in Versions
+        main_area.appendChild(window.versions[0]); // Insert last version into main-area area
+        window.versions.shift(); // Deletes first element in Versions
     }
 }
 
@@ -218,7 +220,7 @@ upload_btn.addEventListener('click', () => {
     }
     
     resetArtworkVar();
-    var v_artwork = artwork.cloneNode(true);
+    var v_artwork = window.artwork.cloneNode(true);
     upload_preview_container.appendChild(v_artwork);
     
     artwork_input.value = main_area.innerHTML;
