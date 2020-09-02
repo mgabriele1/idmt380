@@ -152,15 +152,10 @@ download_btn.addEventListener('click', () => {
 // FILL TOOL
 // --------------------------------
 
-var artwork = document.querySelector(".main-area svg");
-
-var versions = Array(artwork.cloneNode(true));
-
-function resetArtworkVar(versions) {
+function resetArtworkVar() {
     artwork = document.querySelector(".main-area svg"); // Re-vars the svg as artwork
 }
-resetArtworkVar(versions);
-
+resetArtworkVar();
 
 const main_area = document.querySelector(".main-area");
 
@@ -184,9 +179,11 @@ main_area.addEventListener('click', (event) => {
 // UNDO FUNCTION
 // --------------------------------
 
-function push_version(versions) {
-    resetArtworkVar(versions);
-        if (versions.length === 30) { // 30 = Max undo
+let versions = [artwork.cloneNode(true)]; // Init the Versions Array, put default as first element in Versions
+
+function push_version() {
+    resetArtworkVar();
+        if (versions.length == 30) { // 30 = Max undo
             versions.pop(); // Removes last element in Versions
         }
     var v_artwork = artwork.cloneNode(true);
@@ -206,6 +203,7 @@ function undo() {
         versions.shift(); // Deletes first element in Versions
     }
 }
+
 
 // --------------------------------
 // UPLOAD BUTTON
@@ -256,19 +254,20 @@ function toggle_upload_screen() {
 // COLOR SWATCH SCROLL/ CENTER
 // -------------------------------
 
-var outerSwatch = document.getElementById("swatch-out");
-var outerWidth = outerSwatch.clientWidth;
-var innerWidth = document.getElementById("swatch-in").clientWidth;
-
-if (outerWidth > innerWidth) {
-    outerSwatch.classList.remove("swatches");
-    outerSwatch.classList.add("swatches-wide");
-} else {
-    outerSwatch.classList.add("swatches");
-    outerSwatch.classList.remove("swatches-wide");
+function responsivenessCheck() {
+    var outerSwatch = document.getElementById("swatch-out");
+    var outerWidth = outerSwatch.clientWidth;
+    var innerWidth = document.getElementById("swatch-in").clientWidth;
+    
+    if (outerWidth > innerWidth) {
+        outerSwatch.classList.remove("swatches");
+        outerSwatch.classList.add("swatches-wide");
+    } else {
+        outerSwatch.classList.add("swatches");
+        outerSwatch.classList.remove("swatches-wide");
+    }
 }
-
-// var buttonsWidth = document.getElementById("canvb").clientWidth;
-// buttonsWidth = innerWidth;
+window.onresize = responsivenessCheck;
+responsivenessCheck();
 
 }
