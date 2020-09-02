@@ -151,7 +151,7 @@ h1 {
 
 /* Home Hovers */
 
-.b2t, .thumbnails *, .item, .stack, button, .tab p, .swatches *, .item.picker-reflect.active, .picker-close {
+.b2t, .thumbnails *, .item, .stack, button, .tab p, .swatches *, .item.picker-reflect.active, .picker-close, [data-command] {
     transition: all .2s ease-in-out;
     -webkit-transition: all .2s ease-in-out;
 }
@@ -346,16 +346,19 @@ svg {
 
 .active {
     border: white solid .1rem;
+    transform: scale(1.1);
 }
 
 /* Hovers */
 
-[data-command]:hover {
-    background-color: #585858;
-}
 
 .swatch:hover, .stack:hover {
     border: white solid .1rem;
+    transform: scale(1.1);
+}
+
+[data-command]:hover {
+    background-color: #585858;
 }
 
 .main-area svg:hover {

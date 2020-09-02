@@ -47,14 +47,14 @@
                     </div>
                     <div class="item stack"></div>
                     <div class="item picker-reflect hide"></div>
-                    <div class="item swatch active" data-swatch="#ba2fff"></div>
-                    <div class="item swatch" data-swatch="#7d00f9"></div>
+                    <div class="item swatch" data-swatch="#ffffff"></div>
+                    <div class="item swatch" data-swatch="#000000"></div>
+                    <div class="item swatch active" data-swatch="#7d00f9"></div>
                     <div class="item swatch" data-swatch="#4252fe"></div>
                     <div class="item swatch" data-swatch="#00ffd0"></div>
                     <div class="item swatch" data-swatch="#90ff59"></div>
                     <div class="item swatch" data-swatch="#ffda44"></div>
                     <div class="item swatch" data-swatch="#ff8e31"></div>
-                    <div class="item swatch" data-swatch="#ff6543"></div>
                     <div class="item swatch" data-swatch="#ff5d5d"></div>
                 </div>
             </div>
