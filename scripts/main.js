@@ -152,10 +152,15 @@ download_btn.addEventListener('click', () => {
 // FILL TOOL
 // --------------------------------
 
-function resetArtworkVar() {
+var artwork = document.querySelector(".main-area svg");
+
+var versions = Array(artwork.cloneNode(true));
+
+function resetArtworkVar(versions) {
     artwork = document.querySelector(".main-area svg"); // Re-vars the svg as artwork
 }
-resetArtworkVar();
+resetArtworkVar(versions);
+
 
 const main_area = document.querySelector(".main-area");
 
@@ -179,11 +184,9 @@ main_area.addEventListener('click', (event) => {
 // UNDO FUNCTION
 // --------------------------------
 
-let versions = [artwork.cloneNode(true)]; // Init the Versions Array, put default as first element in Versions
-
-function push_version() {
-    resetArtworkVar();
-        if (versions.length == 30) { // 30 = Max undo
+function push_version(versions) {
+    resetArtworkVar(versions);
+        if (versions.length === 30) { // 30 = Max undo
             versions.pop(); // Removes last element in Versions
         }
     var v_artwork = artwork.cloneNode(true);
