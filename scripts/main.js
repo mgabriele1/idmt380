@@ -25,19 +25,19 @@ const color_wheel = document.querySelector('.stack');
 const picker_close = document.querySelector('.picker-close');
 const picker_reflect = document.querySelector('.picker-reflect');
 
-function togglePicker() {
+function togglePicker(color_picker, picker_reflect, picker_close, color_wheel) {
     if (color_mode == 'picker') {
         if (!document.querySelector('.move-up')) {
-            showAllPicker();
+            showAllPicker(color_picker, picker_reflect, picker_close, color_wheel);
         } else {
-            hideJustPicker()
+            hideJustPicker(color_picker, picker_reflect, picker_close, color_wheel)
         }
     } else if (color_mode == 'swatch') {
-        hideColorPicker();
+        hideColorPicker(color_picker, picker_reflect, picker_close, color_wheel);
     }
 }
 
-function showAllPicker() {
+function showAllPicker(color_picker, picker_reflect, picker_close, color_wheel) {
     color_picker.classList.remove('hide');
     picker_reflect.classList.remove('hide');
     setTimeout(function() {
@@ -46,7 +46,7 @@ function showAllPicker() {
     }, 250);
 }
 
-function hideColorPicker() {
+function hideColorPicker(color_picker, picker_reflect, picker_close, color_wheel) {
     color_picker.classList.remove('move-up');
     picker_reflect.classList.remove('squish');
     setTimeout(function() {
@@ -54,9 +54,9 @@ function hideColorPicker() {
         picker_reflect.classList.add('hide');
     }, 250);
 }
-hideColorPicker();
+hideColorPicker(color_picker, picker_reflect, picker_close, color_wheel);
 
-function hideJustPicker() {
+function hideJustPicker(color_picker, picker_reflect, picker_close, color_wheel) {
     color_picker.classList.remove('move-up');
     setTimeout(function() {
         color_picker.classList.add('hide');
@@ -68,7 +68,7 @@ picker_close.addEventListener('click', togglePicker);
 color_wheel.addEventListener('click', () => {
     reset_active_swatch();
     color_mode = 'picker';
-    togglePicker();
+    togglePicker(color_picker, picker_reflect, picker_close, color_wheel);
     picker_reflect.classList.add('active');
 });
 
@@ -98,21 +98,6 @@ colorPicker.on(["color:init", "color:change"], function(color){
 // SWATCHES
 // --------------------------------
 
-const swatch_container = document.querySelector('.swatches');
-const top_aside = document.querySelector('#top-aside');
-const show_all = document.querySelector('#show-all');
-
-window.onresize = responsivenessCheck;
-responsivenessCheck();
-
-function responsivenessCheck() {
-    if (top_aside.offsetHeight > 60) {
-        top_aside.style.justifyContent = 'center';
-    } else {
-        top_aside.style.justifyContent = 'space-between';
-    }
-}
-
 const swatches = document.querySelectorAll('.swatch[data-swatch]'); // Create Swatches Array
 
 swatches.forEach(swatch => {
@@ -123,7 +108,7 @@ swatches.forEach(swatch => {
         swatch.classList.add('active'); // Set the clicked swatch to the active swatch
         color_mode = 'swatch'; // Set the color mode to Swatch
         new_swatch = swatch; // Set the new swatch
-        togglePicker();
+        togglePicker(color_picker, picker_reflect, picker_close, color_wheel);
     })
 });
 
@@ -179,7 +164,7 @@ main_area.addEventListener('click', (event) => {
     // that would break the listener if it were set to the SVG,
     // var 'event' is a sub variable that gets redefined each click
     if (document.querySelector('.move-up')) {
-        togglePicker();
+        togglePicker(color_picker, picker_reflect, picker_close, color_wheel);
     } else {
         choose_color();
         push_version();
@@ -268,17 +253,17 @@ function toggle_upload_screen() {
 // COLOR SWATCH SCROLL/ CENTER
 // -------------------------------
 
-// var outerSwatch = document.getElementById("swatch-out");
-// var outerWidth = outerSwatch.clientWidth;
-// var innerWidth = document.getElementById("swatch-in").clientWidth;
+var outerSwatch = document.getElementById("swatch-out");
+var outerWidth = outerSwatch.clientWidth;
+var innerWidth = document.getElementById("swatch-in").clientWidth;
 
-// if (outerWidth > innerWidth) {
-//     outerSwatch.classList.remove("swatches");
-//     outerSwatch.classList.add("swatches-wide");
-// } else {
-//     outerSwatch.classList.add("swatches");
-//     outerSwatch.classList.remove("swatches-wide");
-// }
+if (outerWidth > innerWidth) {
+    outerSwatch.classList.remove("swatches");
+    outerSwatch.classList.add("swatches-wide");
+} else {
+    outerSwatch.classList.add("swatches");
+    outerSwatch.classList.remove("swatches-wide");
+}
 
 // var buttonsWidth = document.getElementById("canvb").clientWidth;
 // buttonsWidth = innerWidth;
