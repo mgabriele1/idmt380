@@ -16,7 +16,7 @@
             </script>
             <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5" defer></script>
             <?php } ?>
-    <script src="scripts/main.js" defer></script>
+    <script src="dist/scripts/main-min.js" defer></script>
 </head>
 <body <?php if ($current_page == 'color') { echo 'class="coloring-page"';} ?>>
     <header id="top">
