@@ -20,7 +20,7 @@ if (current_page == 'color') {
 // COLOR WHEEL & PICKER
 // --------------------------------
 
-const color_picker = document.querySelector('.colorPicker');
+const color_picker = document.querySelector('.color-picker');
 const color_wheel = document.querySelector('.stack');
 const picker_close = document.querySelector('.picker-close');
 const picker_reflect = document.querySelector('.picker-reflect');
@@ -79,7 +79,7 @@ function reset_active_swatch() {
     }
 }
 
-var colorPicker = new iro.ColorPicker(".colorPicker", {
+var colorPicker = new iro.ColorPicker(".color-picker", {
     // https://iro.js.org/guide.html#getting-started
     // Color option guide: https://iro.js.org/guide.html#color-picker-options
     width: 280,
@@ -268,19 +268,19 @@ function toggle_upload_screen() {
 // COLOR SWATCH SCROLL/ CENTER
 // -------------------------------
 
-var outerSwatch = document.getElementById("swatch-out");
-var outerWidth = outerSwatch.clientWidth;
-var innerWidth = document.getElementById("swatch-in").clientWidth;
+// var outerSwatch = document.getElementById("swatch-out");
+// var outerWidth = outerSwatch.clientWidth;
+// var innerWidth = document.getElementById("swatch-in").clientWidth;
 
-if (outerWidth > innerWidth) {
-    outerSwatch.classList.remove("swatches");
-    outerSwatch.classList.add("swatches-wide");
-} else {
-    outerSwatch.classList.add("swatches");
-    outerSwatch.classList.remove("swatches-wide");
-}
+// if (outerWidth > innerWidth) {
+//     outerSwatch.classList.remove("swatches");
+//     outerSwatch.classList.add("swatches-wide");
+// } else {
+//     outerSwatch.classList.add("swatches");
+//     outerSwatch.classList.remove("swatches-wide");
+// }
 
-var buttonsWidth = document.getElementById("canvb").clientWidth;
-buttonsWidth = innerWidth;
+// var buttonsWidth = document.getElementById("canvb").clientWidth;
+// buttonsWidth = innerWidth;
 
 }

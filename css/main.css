@@ -476,7 +476,7 @@ button[type="reset"]:hover {
 
 /* Color picker */
 
-.colorPicker {
+.color-picker {
     width: 280px;
     height: 280px;
     margin: auto calc(50% - (280px/2));
