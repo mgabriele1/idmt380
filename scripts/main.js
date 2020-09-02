@@ -22,22 +22,21 @@ if (current_page == 'color') {
 
 const color_picker = document.querySelector('.color-picker');
 const color_wheel = document.querySelector('.stack');
-const picker_close = document.querySelector('.picker-close');
 const picker_reflect = document.querySelector('.picker-reflect');
 
-function togglePicker(color_picker, picker_reflect, picker_close, color_wheel) {
+function togglePicker(color_picker, picker_reflect, color_wheel) {
     if (color_mode == 'picker') {
         if (!document.querySelector('.move-up')) {
-            showAllPicker(color_picker, picker_reflect, picker_close, color_wheel);
+            showAllPicker(color_picker, picker_reflect, color_wheel);
         } else {
-            hideJustPicker(color_picker, picker_reflect, picker_close, color_wheel)
+            hideJustPicker(color_picker, picker_reflect, color_wheel)
         }
     } else if (color_mode == 'swatch') {
-        hideColorPicker(color_picker, picker_reflect, picker_close, color_wheel);
+        hideColorPicker(color_picker, picker_reflect, color_wheel);
     }
 }
 
-function showAllPicker(color_picker, picker_reflect, picker_close, color_wheel) {
+function showAllPicker(color_picker, picker_reflect) {
     color_picker.classList.remove('hide');
     picker_reflect.classList.remove('hide');
     setTimeout(function() {
@@ -46,7 +45,7 @@ function showAllPicker(color_picker, picker_reflect, picker_close, color_wheel) 
     }, 250);
 }
 
-function hideColorPicker(color_picker, picker_reflect, picker_close, color_wheel) {
+function hideColorPicker(color_picker, picker_reflect) {
     color_picker.classList.remove('move-up');
     picker_reflect.classList.remove('squish');
     setTimeout(function() {
@@ -54,21 +53,19 @@ function hideColorPicker(color_picker, picker_reflect, picker_close, color_wheel
         picker_reflect.classList.add('hide');
     }, 250);
 }
-hideColorPicker(color_picker, picker_reflect, picker_close, color_wheel);
+hideColorPicker(color_picker, picker_reflect, color_wheel);
 
-function hideJustPicker(color_picker, picker_reflect, picker_close, color_wheel) {
+function hideJustPicker(color_picker) {
     color_picker.classList.remove('move-up');
     setTimeout(function() {
         color_picker.classList.add('hide');
         }, 250);
 }
 
-picker_close.addEventListener('click', togglePicker);
-
 color_wheel.addEventListener('click', () => {
     reset_active_swatch();
     color_mode = 'picker';
-    togglePicker(color_picker, picker_reflect, picker_close, color_wheel);
+    togglePicker(color_picker, picker_reflect, color_wheel);
     picker_reflect.classList.add('active');
 });
 
@@ -108,7 +105,7 @@ swatches.forEach(swatch => {
         swatch.classList.add('active'); // Set the clicked swatch to the active swatch
         color_mode = 'swatch'; // Set the color mode to Swatch
         new_swatch = swatch; // Set the new swatch
-        togglePicker(color_picker, picker_reflect, picker_close, color_wheel);
+        togglePicker(color_picker, picker_reflect, color_wheel);
     })
 });
 
@@ -164,7 +161,7 @@ main_area.addEventListener('click', (event) => {
     // that would break the listener if it were set to the SVG,
     // var 'event' is a sub variable that gets redefined each click
     if (document.querySelector('.move-up')) {
-        togglePicker(color_picker, picker_reflect, picker_close, color_wheel);
+        togglePicker(color_picker, picker_reflect, color_wheel);
     } else {
         choose_color();
         push_version();

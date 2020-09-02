@@ -39,11 +39,7 @@
             </div>
             <div id="swatch-out" class="swatches">
                 <div id="swatch-in" class="swatches-inner">
-                    <div id="color-picker" class="color-picker hide">
-                        <div class="picker-close">
-                            <div class="x"></div>
-                            <div class="x"></div>
-                        </div>
+                    <div class="color-picker move-up hide">
                     </div>
                     <div class="item stack"></div>
                     <div class="item picker-reflect hide"></div>

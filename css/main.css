@@ -151,7 +151,7 @@ h1 {
 
 /* Home Hovers */
 
-.b2t, .thumbnails *, .item, .stack, button, .tab p, .swatches *, .item.picker-reflect.active, .picker-close, [data-command] {
+.b2t, .thumbnails *, .item, .stack, button, .tab p, .swatches *, .item.picker-reflect.active, [data-command] {
     transition: all .2s ease-in-out;
     -webkit-transition: all .2s ease-in-out;
 }
@@ -490,29 +490,6 @@ button[type="reset"]:hover {
 
 svg.IroSlider {
     display: none !important;
-}
-
-.picker-close {
-    background-color: #fff;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    position: absolute;
-    right: 0;
-    padding: 0.5rem .85rem;
-    transform: rotate(45deg);
-    box-shadow: 0 0 7px 5px #00000025;
-}
-
-.picker-close:hover {
-    transform: rotate(45deg) scale(1.15);
-}
-
-.picker-close .x {
-    width: .25rem;
-    height: 1rem;
-    background-color: #000;
-    position: absolute;
 }
 
 .x:first-of-type {
